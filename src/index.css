@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  font-size: 10rem;
+}
+
+@media screen and (min-width: 321px) {
+  body {
+    font-size: 12rem
+  }
+}
+
+@media screen and (min-width: 721px) {
+  body {
+    font-size: 14rem
+  }
+}
