@@ -5,13 +5,11 @@ import StyledHotspot from './styled';
 import HotspotInfo from './HotspotInfo';
 
 const Hotspot = ({
-  left, text, title, top,
+  id, left, text, title, top,
 }) => {
   const [isShowingInfo, setIsShowingInfo] = useState(!title && !text);
 
-  const toggleContent = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const toggleContent = () => {
     setIsShowingInfo(!isShowingInfo);
   };
 
@@ -24,6 +22,7 @@ const Hotspot = ({
       />
       { isShowingInfo && (
         <HotspotInfo
+          id={id}
           title={title}
           text={text}
           left={left}
@@ -37,6 +36,7 @@ const Hotspot = ({
 };
 
 Hotspot.propTypes = {
+  id: PropTypes.string.isRequired,
   left: PropTypes.number,
   title: PropTypes.string,
   text: PropTypes.string,

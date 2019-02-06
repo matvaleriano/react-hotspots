@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
+import Context from '../../Context';
 import StyledHotspotInfo from './styled';
 import Title from './Title';
 import Text from './Text';
@@ -9,30 +10,59 @@ import Textarea from '../../Textarea';
 import Button from '../../Button';
 
 const HotspotInfo = ({
-  text, title, left, top,
-}) => (
-  <StyledHotspotInfo left={left} top={top}>
-    <Wrapper>
-      { title && text
-        ? (
-          <>
-            <Title>{title}</Title>
-            <Text>{text}</Text>
-          </>
-        )
-        : (
-          <>
-            <InputText placeholder="Title" maxlength="52" />
-            <Textarea placeholder="Description" maxlength="280" />
-            <Button brand size="large">Save</Button>
-          </>
-        )
-      }
-    </Wrapper>
-  </StyledHotspotInfo>
-);
+  id, left, text, title, top,
+}) => {
+  const { updateHotspot } = useContext(Context);
+  const [updatedTitle, setTitle] = useState(title);
+  const [updatedText, setText] = useState(text);
+
+  return (
+    <StyledHotspotInfo left={left} top={top}>
+      <Wrapper>
+        { title && text
+          ? (
+            <>
+              <Title>{title}</Title>
+              <Text>{text}</Text>
+            </>
+          )
+          : (
+            <>
+              <InputText
+                name="title"
+                placeholder="Title"
+                maxlength="52"
+                value={updatedTitle}
+                onChange={({ target: { value } }) => setTitle(value)}
+              />
+              <Textarea
+                name="text"
+                placeholder="Description"
+                maxlength="280"
+                onChange={({ target: { value } }) => setText(value)}
+              />
+              <Button
+                type="submit"
+                brand
+                size="large"
+                onClick={() => updateHotspot({
+                  id: id,
+                  text: updatedText,
+                  title: updatedTitle,
+                })}
+              >
+                Save
+              </Button>
+            </>
+          )
+        }
+      </Wrapper>
+    </StyledHotspotInfo>
+  )
+};
 
 HotspotInfo.propTypes = {
+  id: PropTypes.string.isRequired,
   left: PropTypes.number,
   text: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
