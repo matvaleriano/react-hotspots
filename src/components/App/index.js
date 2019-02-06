@@ -18,9 +18,9 @@ const App = () => {
       <HotspotAdd />
       <HotspotsList />
 
-      { markers.map((hotspot, index) => (
+      { markers.map((hotspot) => (
         <Hotspot
-          key={index.toString()}
+          key={hotspot.id}
           {...hotspot}
         />
       ))
