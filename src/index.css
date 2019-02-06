@@ -10,6 +10,12 @@ body {
   font-size: 10rem;
 }
 
+.is-pointing {
+  box-shadow: 0px 0px 0px 2px #FF5B5B;
+  background-color: #FFF2F2;
+  cursor: pointer;
+}
+
 @media screen and (min-width: 321px) {
   body {
     font-size: 12rem
