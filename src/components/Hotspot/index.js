@@ -7,7 +7,7 @@ import HotspotInfo from './HotspotInfo';
 const Hotspot = ({
   left, text, title, top,
 }) => {
-  const [isShowingInfo, setIsShowingInfo] = useState(false);
+  const [isShowingInfo, setIsShowingInfo] = useState(!title && !text);
 
   const toggleContent = (e) => {
     e.preventDefault();
@@ -22,15 +22,14 @@ const Hotspot = ({
         left={left}
         top={top}
       />
-      { isShowingInfo
-        && (
+      { isShowingInfo && (
         <HotspotInfo
           title={title}
           text={text}
           left={left}
           top={top}
         />
-        )
+      )
       }
     </>,
     document.body,
