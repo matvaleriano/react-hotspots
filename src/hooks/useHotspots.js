@@ -6,10 +6,13 @@ const useHotspots = () => {
   const [hotspots, setHotspots] = useState([]);
 
   const removeHotspot = (index) => {
-    setHotspots([
+    const hotspotsToSave = [
       ...hotspots.slice(0, index),
       ...hotspots.slice(index + 1)
-    ])
+    ];
+
+    setHotspots(hotspotsToSave);
+    saveHotspots(hotspotsToSave);
   }
 
   const addHotspot = (e) => {
