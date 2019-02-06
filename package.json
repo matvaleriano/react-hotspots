@@ -2,7 +2,9 @@
   "name": "conpasschallenge",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://mathvaleriano.github.io/react-hotspots",
   "dependencies": {
+    "gh-pages": "^2.0.1",
     "polished": "^2.3.3",
     "prop-types": "^15.6.2",
     "react": "^16.8.1",
@@ -17,7 +19,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "./node_modules/.bin/eslint src/ --fix"
+    "lint": "./node_modules/.bin/eslint src/ --fix",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
