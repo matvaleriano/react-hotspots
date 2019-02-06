@@ -1,21 +1,34 @@
 import { useState, useEffect } from 'react';
 import { getHotspots, saveHotspots } from '../api/hotspots';
 
-function addListeners({ handleAddHotspot, paintElement, removePaintFromElement }) {
-  document.addEventListener('click', handleAddHotspot);
-  document.addEventListener('mouseover', paintElement);
-  document.addEventListener('mouseout', removePaintFromElement);
-}
-
-function removeListeners({ handleAddHotspot, paintElement, removePaintFromElement }) {
-  document.removeEventListener('click', handleAddHotspot);
-  document.removeEventListener('mouseover', paintElement);
-  document.removeEventListener('mouseout', removePaintFromElement);
-}
-
 const useHotspots = () => {
   const [isPointing, setIsPointing] = useState(false);
   const [hotspots, setHotspots] = useState([]);
+
+  const addListeners = ({ handleAddHotspot, paintElement, removePaintFromElement }) => {
+    document.addEventListener('click', handleAddHotspot);
+    document.addEventListener('mouseover', paintElement);
+    document.addEventListener('mouseout', removePaintFromElement);
+  }
+
+  const removeListeners = ({ handleAddHotspot, paintElement, removePaintFromElement }) => {
+    document.removeEventListener('click', handleAddHotspot);
+    document.removeEventListener('mouseover', paintElement);
+    document.removeEventListener('mouseout', removePaintFromElement);
+  }
+
+  const updateHotspot = ({ id, text, title }) => {
+    const hotspotsUpdated = hotspots.map(
+      hotspot => (
+        hotspot.id === id
+          ? { ...hotspot, title, text }
+          : hotspot
+      ),
+    );
+
+    setHotspots(hotspotsUpdated);
+    saveHotspots(hotspotsUpdated);
+  };
 
   const removeHotspot = (index) => {
     const hotspotsToSave = [
@@ -29,7 +42,8 @@ const useHotspots = () => {
 
   const addHotspot = (e) => {
     const { x: left, y: top } = e;
-    const hotspot = { left, top };
+    const generatedId = new Date().toISOString();
+    const hotspot = { left, top, id: generatedId };
     const hotspotsToSave = [...hotspots, hotspot];
 
     setHotspots(hotspotsToSave);
@@ -97,6 +111,7 @@ const useHotspots = () => {
     hotspots,
     startPointing,
     removeHotspot,
+    updateHotspot,
   };
 };
 
