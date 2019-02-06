@@ -30,14 +30,14 @@ const HotspotInfo = ({
             <>
               <InputText
                 name="title"
-                placeholder="Title"
+                placeholder="Insert title here"
                 maxlength="52"
                 value={updatedTitle}
                 onChange={({ target: { value } }) => setTitle(value)}
               />
               <Textarea
                 name="text"
-                placeholder="Description"
+                placeholder="Insert description here"
                 maxlength="280"
                 onChange={({ target: { value } }) => setText(value)}
               />
@@ -46,7 +46,7 @@ const HotspotInfo = ({
                 brand
                 size="large"
                 onClick={() => updateHotspot({
-                  id: id,
+                  id,
                   text: updatedText,
                   title: updatedTitle,
                 })}
@@ -58,7 +58,7 @@ const HotspotInfo = ({
         }
       </Wrapper>
     </StyledHotspotInfo>
-  )
+  );
 };
 
 HotspotInfo.propTypes = {
