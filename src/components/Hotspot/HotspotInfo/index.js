@@ -4,7 +4,9 @@ import StyledHotspotInfo from './styled';
 import Title from './Title';
 import Text from './Text';
 
-const HotspotInfo = ({ text, title, left, top }) => (
+const HotspotInfo = ({
+  text, title, left, top,
+}) => (
   <StyledHotspotInfo left={left} top={top}>
     <Title>{title}</Title>
     <Text>{text}</Text>
@@ -12,8 +14,15 @@ const HotspotInfo = ({ text, title, left, top }) => (
 );
 
 HotspotInfo.propTypes = {
-  title: PropTypes.string.isRequired,
+  left: PropTypes.number,
   text: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  top: PropTypes.number,
+};
+
+HotspotInfo.defaultProps = {
+  left: 0,
+  top: 0,
 };
 
 export default HotspotInfo;

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { darken } from 'polished'
+import { darken } from 'polished';
 import { GREY } from '../../shared/colors';
 
 const Title = styled.h1`

@@ -1,6 +1,18 @@
 import { useState, useEffect } from 'react';
 import { getHotspots, saveHotspots } from '../api/hotspots';
 
+function addListeners({ handleAddHotspot, paintElement, removePaintFromElement }) {
+  document.addEventListener('click', handleAddHotspot);
+  document.addEventListener('mouseover', paintElement);
+  document.addEventListener('mouseout', removePaintFromElement);
+}
+
+function removeListeners({ handleAddHotspot, paintElement, removePaintFromElement }) {
+  document.removeEventListener('click', handleAddHotspot);
+  document.removeEventListener('mouseover', paintElement);
+  document.removeEventListener('mouseout', removePaintFromElement);
+}
+
 const useHotspots = () => {
   const [isPointing, setIsPointing] = useState(false);
   const [hotspots, setHotspots] = useState([]);
@@ -8,15 +20,14 @@ const useHotspots = () => {
   const removeHotspot = (index) => {
     const hotspotsToSave = [
       ...hotspots.slice(0, index),
-      ...hotspots.slice(index + 1)
+      ...hotspots.slice(index + 1),
     ];
 
     setHotspots(hotspotsToSave);
     saveHotspots(hotspotsToSave);
-  }
+  };
 
   const addHotspot = (e) => {
-    console.log(e);
     const { x: left, y: top } = e;
     const hotspot = { left, top };
     const hotspotsToSave = [...hotspots, hotspot];
@@ -37,35 +48,45 @@ const useHotspots = () => {
     addHotspot(e);
     setIsPointing(false);
     removePaintFromElement(e);
-    removeListeners();
-  };
-
-  function addListeners() {
-    document.addEventListener('click', handleAddHotspot);
-    document.addEventListener('mouseover', paintElement);
-    document.addEventListener('mouseout', removePaintFromElement);
-  };
-
-  function removeListeners() {
-    document.removeEventListener('click', handleAddHotspot);
-    document.removeEventListener('mouseover', paintElement);
-    document.removeEventListener('mouseout', removePaintFromElement);
+    removeListeners({
+      handleAddHotspot,
+      paintElement,
+      removePaintFromElement,
+    });
   };
 
   const startPointing = () => {
-    addListeners();
+    addListeners({
+      handleAddHotspot,
+      paintElement,
+      removePaintFromElement,
+    });
     setIsPointing(true);
   };
 
   useEffect(() => {
-    removeListeners();
+    removeListeners({
+      handleAddHotspot,
+      paintElement,
+      removePaintFromElement,
+    });
 
     if (isPointing) {
-      addListeners();
+      addListeners({
+        handleAddHotspot,
+        paintElement,
+        removePaintFromElement
+      });
     }
 
-    return () => { removeListeners() };
-  }, [isPointing])
+    return () => {
+      removeListeners({
+        handleAddHotspot,
+        paintElement,
+        removePaintFromElement,
+      });
+    };
+  }, [isPointing]);
 
   useEffect(() => {
     setHotspots(JSON.parse(getHotspots()));
@@ -75,7 +96,7 @@ const useHotspots = () => {
     isPointing,
     hotspots,
     startPointing,
-    removeHotspot
+    removeHotspot,
   };
 };
 

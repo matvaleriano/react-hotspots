@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import StyledHeader from './styled';
 import Nav from '../Nav';
 import NavLink from '../Nav/Link';

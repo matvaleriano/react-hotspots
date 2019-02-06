@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Context from '../Context';
 import Header from '../Header';
 import Hotspot from '../Hotspot';
@@ -19,11 +19,11 @@ const App = () => {
       <HotspotsList />
 
       { markers.map((hotspot, index) => (
-          <Hotspot
-            key={index.toString()}
-            {...hotspot}
-          />
-        ))
+        <Hotspot
+          key={index.toString()}
+          {...hotspot}
+        />
+      ))
       }
     </Provider>
   );

@@ -6,7 +6,7 @@ import Button from '../Button';
 const HotspotAdd = () => {
   const {
     isPointing,
-    startPointing
+    startPointing,
   } = useContext(Context);
 
   return (
@@ -22,7 +22,7 @@ const HotspotAdd = () => {
         Create Hotspot
       </Button>
     </StyledHotspotAdd>
-  )
+  );
 };
 
 export default HotspotAdd;

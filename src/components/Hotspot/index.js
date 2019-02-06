@@ -4,13 +4,15 @@ import PropTypes from 'prop-types';
 import StyledHotspot from './styled';
 import HotspotInfo from './HotspotInfo';
 
-const Hotspot = ({ left, text, title, top }) => {
+const Hotspot = ({
+  left, text, title, top,
+}) => {
   const [isShowingInfo, setIsShowingInfo] = useState(false);
 
   const toggleContent = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    setIsShowingInfo(!isShowingInfo)
+    setIsShowingInfo(!isShowingInfo);
   };
 
   return ReactDOM.createPortal(
@@ -20,13 +22,15 @@ const Hotspot = ({ left, text, title, top }) => {
         left={left}
         top={top}
       />
-      { isShowingInfo &&
+      { isShowingInfo
+        && (
         <HotspotInfo
           title={title}
           text={text}
           left={left}
           top={top}
         />
+        )
       }
     </>,
     document.body,
