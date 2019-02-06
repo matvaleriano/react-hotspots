@@ -9,15 +9,19 @@ const useHotspots = () => {
     document.addEventListener('click', handleAddHotspot);
     document.addEventListener('mouseover', paintElement);
     document.addEventListener('mouseout', removePaintFromElement);
-  }
+  };
 
   const removeListeners = ({ handleAddHotspot, paintElement, removePaintFromElement }) => {
     document.removeEventListener('click', handleAddHotspot);
     document.removeEventListener('mouseover', paintElement);
     document.removeEventListener('mouseout', removePaintFromElement);
-  }
+  };
 
   const updateHotspot = ({ id, text, title }) => {
+    if (!title || !text) {
+      alert('Please insert all informations');
+    }
+
     const hotspotsUpdated = hotspots.map(
       hotspot => (
         hotspot.id === id
