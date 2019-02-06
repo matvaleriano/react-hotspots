@@ -75,7 +75,7 @@ const useHotspots = () => {
       addListeners({
         handleAddHotspot,
         paintElement,
-        removePaintFromElement
+        removePaintFromElement,
       });
     }
 
