@@ -8,14 +8,16 @@ const StyledHotspot = styled.button`
   position: absolute;
   ${({ top = 0 }) => `top: ${top - (HOTSPOT_SIZE / 2)}px;`}
   ${({ left = 0 }) => `left: ${left - (HOTSPOT_SIZE / 2)}px;`}
-  background-color: rgba(255, 0, 0, .3);
+  background-color: rgba(255, 0, 0, .5);
   cursor: pointer;
   border-radius: 50%;
-  border: 1px solid rgba(255, 0, 0, .3);
-  transition: all .5s ease;
+  border: 0;
+  box-shadow: 0px 0px 0px 3px #fff,
+    0px 0px 0px 6px rgba(255,0,0,.5);
+  transition: all .3s ease;
 
   &:hover {
-    transform: scale(1.5);
+    transform: scale(1.2);
   }
 `;
 
