@@ -12,8 +12,8 @@ const StyledHotspot = styled.button`
   cursor: pointer;
   border-radius: 50%;
   border: 0;
-  box-shadow: 0px 0px 0px 3px #fff,
-    0px 0px 0px 6px rgba(255,0,0,.5);
+  box-shadow: 0px 0px 0px 1.5px #fff,
+    0px 0px 0px 3px rgba(255,0,0,.5);
   transition: all .3s ease;
 
   &:hover {
