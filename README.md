@@ -8,7 +8,7 @@
 
 This project has been created based on a [challenge](https://github.com/Conpass/challenges/blob/master/Frontend-Challenge.md) proposed by the [Conpass](https://www.conpass.io/) but I liked so much of the idea that has been proposed and hooks was comming. So I had decided to implement a project to show some useful hooks and react createPortal (it's awesome too).
 
-This project have some **forced clicks** (it's not a bug) if you put some hotspot on links in navbar... it'll redirect you to some page like my linkedin (**contract me**, lol), github (this repo) or my twitter account.
+This project has some **forced clicks** (it's not a bug) if you put some hotspot on links in navbar... it'll redirect you to some page like my linkedin (**hire me**, lol), github (this repo) or my twitter account.
 
 ### How it works
 
