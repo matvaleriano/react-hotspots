@@ -44,8 +44,7 @@ const useHotspots = () => {
     saveHotspots(hotspotsToSave);
   };
 
-  const addHotspot = (e) => {
-    const { x: left, y: top } = e;
+  const addHotspot = ({ x: left, y: top }) => {
     const generatedId = new Date().toISOString();
     const { offsetWidth, offsetHeight } = document.body;
     const hotspot = {
