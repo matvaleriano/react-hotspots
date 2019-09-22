@@ -4,20 +4,24 @@
   "private": true,
   "homepage": "https://mathvaleriano.github.io/react-hotspots",
   "dependencies": {
+    "@types/jest": "^24.0.18",
+    "@types/node": "^12.7.5",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
     "gh-pages": "^2.0.1",
     "polished": "^3.4.1",
-    "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "^3.1.2",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "typescript": "^3.6.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "./node_modules/.bin/eslint src/ --fix",
+    "lint": "./node_modules/.bin/eslint.cmd src/**/*.{ts,tsx}",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
@@ -31,10 +35,15 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.12.4"
+    "@typescript-eslint/eslint-plugin": "^2.3.0",
+    "@typescript-eslint/parser": "^2.3.0",
+    "eslint": "^6.4.0",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^2.0.1",
+    "prettier": "^1.18.2"
   },
   "husky": {
     "hooks": {
