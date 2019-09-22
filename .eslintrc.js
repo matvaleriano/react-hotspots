@@ -1,33 +1,27 @@
 module.exports = {
-  "extends": "airbnb",
-  "env": {
-    "es6": true,
-    "node": true,
-    "browser": true,
-    "jest": true
-  },
-  "rules": {
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
-      }
-    ]
-  },
-  "parser": "babel-eslint",
-  "plugins": [
-    "react"
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier/@typescript-eslint',
+    'plugin:prettier/recommended',
   ],
-  "parserOptions": {
-    "ecmaVersion": 8,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "impliedStrict": true,
-      "jsx": true,
-      "experimentalObjectRestSpread": true
-    }
-  }
+  plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier'],
+  env: {
+    browser: true,
+    jasmine: true,
+    jest: true,
+  },
+  rules: {
+    'prettier/prettier': ['error', { singleQuote: true }],
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+  },
+  settings: {
+    react: {
+      pragma: 'React',
+      version: 'detect',
+    },
+  },
+  parser: '@typescript-eslint/parser',
 };
