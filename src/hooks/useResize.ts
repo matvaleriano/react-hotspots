@@ -19,7 +19,7 @@ const useResize = (el = document.body) => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [handleResize]);
 
   return size;
 };

@@ -13,12 +13,12 @@ const Wrapper = styled.div`
   &:before {
     content: '';
     transform: rotate(45deg);
-    border: 1px solid rgba(0,0,0,0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-bottom: 0;
     border-right: 0;
     position: absolute;
     background: #fff;
-    top: -.5rem;
+    top: -0.5rem;
     left: 0;
     right: 0;
     margin: auto;

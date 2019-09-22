@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Textarea = styled.textarea`
   box-sizing: border-box;
-  padding: .25rem;
+  padding: 0.25rem;
   font-size: 1rem;
   background: transparent;
   border: 0;

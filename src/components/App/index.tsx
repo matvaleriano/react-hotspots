@@ -18,13 +18,9 @@ const App = () => {
       <HotspotAdd />
       <HotspotsList />
 
-      { markers.map(hotspot => (
-        <Hotspot
-          key={hotspot.id}
-          {...hotspot}
-        />
-      ))
-      }
+      {markers.map(hotspot => (
+        <Hotspot key={hotspot.id} {...hotspot} />
+      ))}
     </Provider>
   );
 };

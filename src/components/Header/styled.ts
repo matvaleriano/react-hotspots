@@ -4,7 +4,7 @@ import { GREY } from '../../shared/colors';
 const StyledHeader = styled.header`
   display: flex;
   justify-content: center;
-  padding: .5rem;
+  padding: 0.5rem;
   margin: 0 2.5vw;
   height: 10vh;
   width: 95vw;

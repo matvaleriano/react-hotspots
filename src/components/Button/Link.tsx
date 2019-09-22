@@ -10,19 +10,27 @@ const LinkButton = styled.button`
   background-color: transparent;
   color: ${({ color = BRAND }) => color};
   font-weigth: ${({ fontWeight = 'normal' }) => fontWeight};
-  ${({ width }) => width && css`width: ${width}`}
-  ${({ height }) => height && css`height: ${height}`}
+  ${({ width }) =>
+    width &&
+    css`
+      width: ${width};
+    `}
+  ${({ height }) =>
+    height &&
+    css`
+      height: ${height};
+    `}
   ${({ size }) => {
     switch (size) {
       case 'small':
         return css`
-          font-size: .5rem;
-          padding: .39rem;
+          font-size: 0.5rem;
+          padding: 0.39rem;
         `;
       case 'large':
         return css`
           font-size: 1.1rem;
-          padding: .7rem;
+          padding: 0.7rem;
         `;
       case 'largest':
         return css`
@@ -31,8 +39,8 @@ const LinkButton = styled.button`
         `;
       default:
         return css`
-          font-size: .7rem;
-          padding: .5rem;
+          font-size: 0.7rem;
+          padding: 0.5rem;
         `;
     }
   }}

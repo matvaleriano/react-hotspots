@@ -5,9 +5,7 @@ import useResize from '../../hooks/useResize';
 import StyledHotspot from './styled';
 import HotspotInfo from './HotspotInfo';
 
-const Hotspot = ({
-  id, left, text, title, top, windowSize,
-}) => {
+const Hotspot = ({ id, left, text, title, top, windowSize }) => {
   const { height: currentHeight, width: currentWidth } = useResize();
   const [isShowingInfo, setIsShowingInfo] = useState(!title && !text);
 
@@ -25,7 +23,7 @@ const Hotspot = ({
         left={currenPositionLeft}
         top={currenPositionTop}
       />
-      { isShowingInfo && (
+      {isShowingInfo && (
         <HotspotInfo
           id={id}
           title={title}
@@ -33,10 +31,9 @@ const Hotspot = ({
           left={currenPositionLeft}
           top={currenPositionTop}
         />
-      )
-      }
+      )}
     </>,
-    document.body,
+    document.body
   );
 };
 

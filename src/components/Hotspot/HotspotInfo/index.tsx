@@ -9,9 +9,7 @@ import InputText from '../../Input/Text';
 import Textarea from '../../Textarea';
 import Button from '../../Button';
 
-const HotspotInfo = ({
-  id, left, text, title, top,
-}) => {
+const HotspotInfo = ({ id, left, text, title, top }) => {
   const { updateHotspot } = useContext(Context);
   const [updatedTitle, setTitle] = useState(title);
   const [updatedText, setText] = useState(text);
@@ -19,43 +17,42 @@ const HotspotInfo = ({
   return (
     <StyledHotspotInfo left={left} top={top}>
       <Wrapper>
-        { title && text
-          ? (
-            <>
-              <Title>{title}</Title>
-              <Text>{text}</Text>
-            </>
-          )
-          : (
-            <>
-              <InputText
-                name="title"
-                placeholder="Insert title here"
-                maxlength="52"
-                value={updatedTitle}
-                onChange={({ target: { value } }) => setTitle(value)}
-              />
-              <Textarea
-                name="text"
-                placeholder="Insert description here"
-                maxlength="280"
-                onChange={({ target: { value } }) => setText(value)}
-              />
-              <Button
-                type="submit"
-                brand
-                size="large"
-                onClick={() => updateHotspot({
+        {title && text ? (
+          <>
+            <Title>{title}</Title>
+            <Text>{text}</Text>
+          </>
+        ) : (
+          <>
+            <InputText
+              name="title"
+              placeholder="Insert title here"
+              maxlength="52"
+              value={updatedTitle}
+              onChange={({ target: { value } }) => setTitle(value)}
+            />
+            <Textarea
+              name="text"
+              placeholder="Insert description here"
+              maxlength="280"
+              onChange={({ target: { value } }) => setText(value)}
+            />
+            <Button
+              type="submit"
+              brand
+              size="large"
+              onClick={() =>
+                updateHotspot({
                   id,
                   text: updatedText,
                   title: updatedTitle,
-                })}
-              >
-                Save
-              </Button>
-            </>
-          )
-        }
+                })
+              }
+            >
+              Save
+            </Button>
+          </>
+        )}
       </Wrapper>
     </StyledHotspotInfo>
   );

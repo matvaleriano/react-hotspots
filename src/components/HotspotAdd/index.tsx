@@ -4,10 +4,7 @@ import Context from '../Context';
 import Button from '../Button';
 
 const HotspotAdd = () => {
-  const {
-    isPointing,
-    startPointing,
-  } = useContext(Context);
+  const { isPointing, startPointing } = useContext(Context);
 
   return (
     <StyledHotspotAdd>

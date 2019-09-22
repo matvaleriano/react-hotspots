@@ -5,13 +5,21 @@ const useHotspots = () => {
   const [isPointing, setIsPointing] = useState(false);
   const [hotspots, setHotspots] = useState([]);
 
-  const addListeners = ({ handleAddHotspot, paintElement, removePaintFromElement }) => {
+  const addListeners = ({
+    handleAddHotspot,
+    paintElement,
+    removePaintFromElement,
+  }) => {
     document.addEventListener('click', handleAddHotspot);
     document.addEventListener('mouseover', paintElement);
     document.addEventListener('mouseout', removePaintFromElement);
   };
 
-  const removeListeners = ({ handleAddHotspot, paintElement, removePaintFromElement }) => {
+  const removeListeners = ({
+    handleAddHotspot,
+    paintElement,
+    removePaintFromElement,
+  }) => {
     document.removeEventListener('click', handleAddHotspot);
     document.removeEventListener('mouseover', paintElement);
     document.removeEventListener('mouseout', removePaintFromElement);
@@ -22,19 +30,15 @@ const useHotspots = () => {
       alert('Please insert all informations');
     }
 
-    const hotspotsUpdated = hotspots.map(
-      hotspot => (
-        hotspot.id === id
-          ? { ...hotspot, title, text }
-          : hotspot
-      ),
+    const hotspotsUpdated = hotspots.map(hotspot =>
+      hotspot.id === id ? { ...hotspot, title, text } : hotspot
     );
 
     setHotspots(hotspotsUpdated);
     saveHotspots(hotspotsUpdated);
   };
 
-  const removeHotspot = (index) => {
+  const removeHotspot = index => {
     const hotspotsToSave = [
       ...hotspots.slice(0, index),
       ...hotspots.slice(index + 1),
@@ -70,7 +74,7 @@ const useHotspots = () => {
     target.classList.remove('is-pointing');
   };
 
-  const handleAddHotspot = (e) => {
+  const handleAddHotspot = useCallback(e => {
     addHotspot(e);
     setIsPointing(false);
     removePaintFromElement(e);
@@ -79,7 +83,7 @@ const useHotspots = () => {
       paintElement,
       removePaintFromElement,
     });
-  };
+  });
 
   const startPointing = () => {
     addListeners({
@@ -112,7 +116,7 @@ const useHotspots = () => {
         removePaintFromElement,
       });
     };
-  }, [isPointing]);
+  }, [handleAddHotspot, isPointing]);
 
   useEffect(() => {
     setHotspots(JSON.parse(getHotspots()));

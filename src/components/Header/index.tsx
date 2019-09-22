@@ -18,10 +18,7 @@ const Header = () => (
       >
         LinkedIn
       </NavLink>
-      <NavLink
-        href="https://twitter.com/mathvaleriano"
-        target="_blank"
-      >
+      <NavLink href="https://twitter.com/mathvaleriano" target="_blank">
         Twitter
       </NavLink>
     </Nav>
