@@ -1,8 +1,6 @@
 # React-Hotspots
-[![Build Status](https://travis-ci.org/mathvaleriano/react-hotspots.svg?branch=master)](https://travis-ci.org/mathvaleriano/react-hotspots)
 
-
-` What's a Hotspot? It's a visual effect to show somenthing new.`
+` What's a Hotspot? It's a visual effect to show something new.`
 
 ### Motivation
 
