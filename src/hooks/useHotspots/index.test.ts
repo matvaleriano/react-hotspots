@@ -38,26 +38,31 @@ describe('useHotspots', () => {
     expect(hook.result.current.state.hotspots).toEqual([hotspot]);
   });
 
-  test('should remove the hotspot by id', () => {
+  describe('deleteHotspot', () => {
     const id = new Date().toISOString();
-    const hotspot = {
-      description: 'description',
-      id,
-      position: {
-        left: 0,
-        top: 0,
-      },
-      title: 'title',
-    };
 
-    act(() => {
-      hook.result.current.actions.saveHotspot(hotspot);
+    beforeEach(() => {
+      const hotspot = {
+        description: 'description',
+        id,
+        position: {
+          left: 0,
+          top: 0,
+        },
+        title: 'title',
+      };
+
+      act(() => {
+        hook.result.current.actions.saveHotspot(hotspot);
+      });
     });
 
-    act(() => {
-      hook.result.current.actions.deleteHotspot(id);
-    });
+    test('should remove the hotspot by id', () => {
+      act(() => {
+        hook.result.current.actions.deleteHotspot(id);
+      });
 
-    expect(hook.result.current.state.hotspots).toEqual([]);
+      expect(hook.result.current.state.hotspots).toEqual([]);
+    });
   });
 });
