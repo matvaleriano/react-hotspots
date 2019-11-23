@@ -1,10 +1,9 @@
-
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-  sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -15,20 +14,20 @@ button {
   outline: unset;
 }
 
-.is-pointing {
-  box-shadow: 0px 0px 0px 2px #FF5B5B;
-  background-color: #FFF2F2;
+.is-pointed {
+  box-shadow: 0px 0px 0px 2px #ff5b5b;
+  background-color: #fff2f2;
   cursor: pointer;
 }
 
 @media screen and (min-width: 321px) {
   body {
-    font-size: 12rem
+    font-size: 12rem;
   }
 }
 
 @media screen and (min-width: 721px) {
   body {
-    font-size: 14rem
+    font-size: 14rem;
   }
 }
