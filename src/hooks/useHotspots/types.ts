@@ -18,6 +18,7 @@ export type UseHotspotsResult = {
     [Actions.deleteHotspot]: (id: string) => void;
     [Actions.editHotspot]: (hotspot: Hotspot) => void;
     [Actions.saveHotspot]: (hotspot: Hotspot) => void;
+    [Actions.toggleIsClicking]: (isClicking: boolean) => void;
   };
 };
 
