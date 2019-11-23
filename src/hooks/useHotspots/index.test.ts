@@ -17,6 +17,19 @@ describe('useHotspots', () => {
     expect(hook.result.current.state.isClicking).toBeFalsy();
   });
 
+  test.each`
+    isClicking   | expected
+    ${undefined} | ${false}
+    ${false}     | ${false}
+    ${true}      | ${true}
+  `('should update isClicking', ({ isClicking }) => {
+    act(() => {
+      hook.result.current.actions.toggleIsClicking(isClicking);
+    });
+
+    expect(hook.result.current.state.isClicking).toEqual(isClicking);
+  });
+
   test('should return an empty array of hotspots', () => {
     expect(hook.result.current.state.hotspots).toEqual([]);
   });
