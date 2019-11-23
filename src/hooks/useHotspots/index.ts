@@ -42,37 +42,57 @@ const initialState = {
 const useHotspots = (): UseHotspotsResult => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const actions = {
+    deleteHotspot: (id: string): void => {
+      dispatch({ type: Actions.deleteHotspot, payload: { id } });
+    },
+    editHotspot: (hotspot: Hotspot): void => {
+      dispatch({ type: Actions.editHotspot, payload: { hotspot } });
+    },
+    saveHotspot: (hotspot: Hotspot): void => {
+      dispatch({ type: Actions.saveHotspot, payload: { hotspot } });
+    },
+    toggleIsPointing: (isPointing: boolean = false): void => {
+      dispatch({
+        type: Actions.toggleIsPointing,
+        payload: { isPointing: isPointing },
+      });
+    },
+  };
+
   useEffect(() => {
+    const handleClick = (event: MouseEvent) => {
+      const id = new Date().toISOString();
+      const { x: left, y: top } = event;
+      const hotspot = {
+        position: {
+          left,
+          top,
+        },
+        id,
+        title: '',
+        description: '',
+      };
+      actions.saveHotspot(hotspot);
+      dontPointElement(event);
+    };
+
     if (state.isPointing) {
       document.addEventListener('mouseover', pointElement);
       document.addEventListener('mouseleave', dontPointElement);
+      document.addEventListener('click', handleClick);
     }
 
     return () => {
       document.removeEventListener('mouseover', pointElement);
       document.removeEventListener('mouseleave', dontPointElement);
+      document.removeEventListener('click', handleClick);
     };
   }, [state.isPointing]);
 
   return {
     state,
-    actions: {
-      deleteHotspot: (id: string): void => {
-        dispatch({ type: Actions.deleteHotspot, payload: { id } });
-      },
-      editHotspot: (hotspot: Hotspot): void => {
-        dispatch({ type: Actions.editHotspot, payload: { hotspot } });
-      },
-      saveHotspot: (hotspot: Hotspot): void => {
-        dispatch({ type: Actions.saveHotspot, payload: { hotspot } });
-      },
-      toggleIsPointing: (isPointing: boolean = false): void => {
-        dispatch({
-          type: Actions.toggleIsPointing,
-          payload: { isPointing: isPointing },
-        });
-      },
-    },
+    actions,
   };
 };
 
