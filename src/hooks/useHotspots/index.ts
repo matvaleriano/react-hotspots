@@ -9,6 +9,15 @@ const reducer = (state: State, action: ReducerActions): State => {
         ...state,
         hotspots: state.hotspots.filter(({ id }) => id !== action.payload.id),
       };
+    case Actions.editHotspot:
+      return {
+        ...state,
+        hotspots: state.hotspots.map(hotspot =>
+          hotspot.id === action.payload.hotspot.id
+            ? action.payload.hotspot
+            : hotspot
+        ),
+      };
     case Actions.saveHotspot:
       return {
         ...state,
@@ -32,6 +41,9 @@ const useHotspots = (): UseHotspotsResult => {
     actions: {
       deleteHotspot: (id: string): void => {
         dispatch({ type: Actions.deleteHotspot, payload: { id } });
+      },
+      editHotspot: (hotspot: Hotspot): void => {
+        dispatch({ type: Actions.editHotspot, payload: { hotspot } });
       },
       saveHotspot: (hotspot: Hotspot): void => {
         dispatch({ type: Actions.saveHotspot, payload: { hotspot } });
