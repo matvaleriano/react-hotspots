@@ -15,6 +15,7 @@ export type State = {
 export type UseHotspotsResult = {
   state: State;
   actions: {
+    [Actions.deleteHotspot]: (id: string) => void;
     [Actions.saveHotspot]: (hotspot: Hotspot) => void;
   };
 };
