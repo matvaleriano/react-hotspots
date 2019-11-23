@@ -40,18 +40,17 @@ describe('useHotspots', () => {
 
   describe('deleteHotspot', () => {
     const id = new Date().toISOString();
+    const hotspot = {
+      description: 'description',
+      id,
+      position: {
+        left: 0,
+        top: 0,
+      },
+      title: 'title',
+    };
 
     beforeEach(() => {
-      const hotspot = {
-        description: 'description',
-        id,
-        position: {
-          left: 0,
-          top: 0,
-        },
-        title: 'title',
-      };
-
       act(() => {
         hook.result.current.actions.saveHotspot(hotspot);
       });
@@ -63,6 +62,14 @@ describe('useHotspots', () => {
       });
 
       expect(hook.result.current.state.hotspots).toEqual([]);
+    });
+
+    test('should not remove any hotspot, id not found', () => {
+      act(() => {
+        hook.result.current.actions.deleteHotspot('wrong');
+      });
+
+      expect(hook.result.current.state.hotspots).toEqual([hotspot]);
     });
   });
 });
