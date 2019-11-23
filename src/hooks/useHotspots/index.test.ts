@@ -72,4 +72,32 @@ describe('useHotspots', () => {
       expect(hook.result.current.state.hotspots).toEqual([hotspot]);
     });
   });
+
+  describe('editHotspot', () => {
+    const id = new Date().toISOString();
+    const hotspot = {
+      description: 'description',
+      id,
+      position: {
+        left: 0,
+        top: 0,
+      },
+      title: 'title',
+    };
+
+    beforeEach(() => {
+      act(() => {
+        hook.result.current.actions.saveHotspot(hotspot);
+      });
+    });
+
+    test('should update hotspot', () => {
+      const editedHotspot = { ...hotspot, title: 'new title' };
+      act(() => {
+        hook.result.current.actions.editHotspot(editedHotspot);
+      });
+
+      expect(hook.result.current.state.hotspots).toEqual([editedHotspot]);
+    });
+  });
 });
