@@ -99,5 +99,13 @@ describe('useHotspots', () => {
 
       expect(hook.result.current.state.hotspots).toEqual([editedHotspot]);
     });
+
+    test('should not update any hotspot', () => {
+      const editedHotspot = { ...hotspot, id: 'notFoundId' };
+      act(() => {
+        hook.result.current.actions.editHotspot(editedHotspot);
+      });
+      expect(hook.result.current.state.hotspots).toEqual([hotspot]);
+    });
   });
 });
