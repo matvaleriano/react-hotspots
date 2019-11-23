@@ -13,21 +13,21 @@ describe('useHotspots', () => {
     hook = renderHook(() => useHotspots());
   });
 
-  test('should return isClicking false', () => {
-    expect(hook.result.current.state.isClicking).toBeFalsy();
+  test('should return isPointing false', () => {
+    expect(hook.result.current.state.isPointing).toBeFalsy();
   });
 
   test.each`
-    isClicking   | expected
+    isPointing   | expected
     ${undefined} | ${false}
     ${false}     | ${false}
     ${true}      | ${true}
-  `('should update isClicking', ({ isClicking, expected }) => {
+  `('should update isPointing', ({ isPointing, expected }) => {
     act(() => {
-      hook.result.current.actions.toggleIsClicking(isClicking);
+      hook.result.current.actions.toggleIsPointing(isPointing);
     });
 
-    expect(hook.result.current.state.isClicking).toEqual(expected);
+    expect(hook.result.current.state.isPointing).toEqual(expected);
   });
 
   test('should return an empty array of hotspots', () => {

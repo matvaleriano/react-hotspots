@@ -4,11 +4,11 @@ export enum Actions {
   deleteHotspot = 'deleteHotspot',
   editHotspot = 'editHotspot',
   saveHotspot = 'saveHotspot',
-  toggleIsClicking = 'toggleIsClicking',
+  toggleIsPointing = 'toggleIsPointing',
 }
 
 export type State = {
-  isClicking: boolean;
+  isPointing: boolean;
   hotspots: Hotspot[];
 };
 
@@ -18,7 +18,7 @@ export type UseHotspotsResult = {
     [Actions.deleteHotspot]: (id: string) => void;
     [Actions.editHotspot]: (hotspot: Hotspot) => void;
     [Actions.saveHotspot]: (hotspot: Hotspot) => void;
-    [Actions.toggleIsClicking]: (isClicking: boolean) => void;
+    [Actions.toggleIsPointing]: (isPointing: boolean) => void;
   };
 };
 
@@ -30,4 +30,4 @@ export type ReducerActions =
         hotspot: Hotspot;
       };
     }
-  | { type: Actions.toggleIsClicking; payload: { isClicking: boolean } };
+  | { type: Actions.toggleIsPointing; payload: { isPointing: boolean } };

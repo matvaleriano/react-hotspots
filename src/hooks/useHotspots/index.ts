@@ -23,10 +23,10 @@ const reducer = (state: State, action: ReducerActions): State => {
         ...state,
         hotspots: [...state.hotspots, action.payload.hotspot],
       };
-    case Actions.toggleIsClicking:
+    case Actions.toggleIsPointing:
       return {
         ...state,
-        isClicking: action.payload.isClicking,
+        isPointing: action.payload.isPointing,
       };
     default:
       return state;
@@ -34,7 +34,7 @@ const reducer = (state: State, action: ReducerActions): State => {
 };
 
 const initialState = {
-  isClicking: false,
+  isPointing: false,
   hotspots: [],
 };
 
@@ -53,10 +53,10 @@ const useHotspots = (): UseHotspotsResult => {
       saveHotspot: (hotspot: Hotspot): void => {
         dispatch({ type: Actions.saveHotspot, payload: { hotspot } });
       },
-      toggleIsClicking: (isClicking: boolean = false): void => {
+      toggleIsPointing: (isPointing: boolean = false): void => {
         dispatch({
-          type: Actions.toggleIsClicking,
-          payload: { isClicking: isClicking },
+          type: Actions.toggleIsPointing,
+          payload: { isPointing: isPointing },
         });
       },
     },
