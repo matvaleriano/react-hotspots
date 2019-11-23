@@ -1,4 +1,4 @@
-import { Hotspot } from 'shared/types/hotspot';
+import { Hotspot, HotspotPosition } from 'shared/types/hotspot';
 
 export enum Actions {
   deleteHotspot = 'deleteHotspot',
@@ -16,6 +16,7 @@ export type UseHotspotsResult = {
   state: State;
   actions: {
     [Actions.deleteHotspot]: (id: string) => void;
+    [Actions.editHotspot]: (hotspot: Hotspot) => void;
     [Actions.saveHotspot]: (hotspot: Hotspot) => void;
   };
 };
