@@ -1,6 +1,7 @@
-import { useReducer } from 'react';
+import { useReducer, useEffect } from 'react';
 import { Hotspot } from 'shared/types/hotspot';
 import { Actions, ReducerActions, State, UseHotspotsResult } from './types';
+import { pointElement, dontPointElement } from 'shared/helpers/point';
 
 const reducer = (state: State, action: ReducerActions): State => {
   switch (action.type) {
@@ -40,6 +41,18 @@ const initialState = {
 
 const useHotspots = (): UseHotspotsResult => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    if (state.isPointing) {
+      document.addEventListener('mouseover', pointElement);
+      document.addEventListener('mouseleave', dontPointElement);
+    }
+
+    return () => {
+      document.removeEventListener('mouseover', pointElement);
+      document.removeEventListener('mouseleave', dontPointElement);
+    };
+  }, [state.isPointing]);
 
   return {
     state,
