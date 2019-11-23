@@ -4,6 +4,11 @@ import { Actions, ReducerActions, State, UseHotspotsResult } from './types';
 
 const reducer = (state: State, action: ReducerActions): State => {
   switch (action.type) {
+    case Actions.deleteHotspot:
+      return {
+        ...state,
+        hotspots: state.hotspots.filter(({ id }) => id !== action.payload.id),
+      };
     case Actions.saveHotspot:
       return {
         ...state,
@@ -25,6 +30,9 @@ const useHotspots = (): UseHotspotsResult => {
   return {
     state,
     actions: {
+      deleteHotspot: (id: string): void => {
+        dispatch({ type: Actions.deleteHotspot, payload: { id } });
+      },
       saveHotspot: (hotspot: Hotspot): void => {
         dispatch({ type: Actions.saveHotspot, payload: { hotspot } });
       },
