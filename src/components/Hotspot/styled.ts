@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { HOTSPOT_SIZE } from './constants';
 import { HotspotPosition } from 'shared/types/hotspot';
 
-const StyledHotspot = styled.button`
+export const Spot = styled.button`
   box-sizing: border-box;
   width: ${HOTSPOT_SIZE}px;
   height: ${HOTSPOT_SIZE}px;
@@ -23,5 +23,3 @@ const StyledHotspot = styled.button`
     transform: scale(1.2);
   }
 `;
-
-export default StyledHotspot;

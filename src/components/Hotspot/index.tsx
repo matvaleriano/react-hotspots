@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import React, { useState } from 'react';
-import StyledHotspot from './styled';
-import HotspotInfo from './HotspotInfo';
+import * as S from './styled';
+import HotspotInfo from '../HotspotInfo';
 import { Hotspot as Props } from 'shared/types/hotspot';
 
 const Hotspot: React.SFC<Props> = ({
@@ -14,7 +14,7 @@ const Hotspot: React.SFC<Props> = ({
 
   return ReactDOM.createPortal(
     <>
-      <StyledHotspot
+      <S.Spot
         onClick={(): void => {
           setIsShowingInfo(!isShowingInfo);
         }}
