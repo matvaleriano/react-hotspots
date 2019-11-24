@@ -7,5 +7,5 @@ export type Hotspot = {
   description?: string;
   id: string;
   position: HotspotPosition;
-  title: string;
+  title?: string;
 };
