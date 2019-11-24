@@ -1,5 +1,4 @@
 import React from 'react';
-import { Hotspot } from 'shared/types/hotspot';
 import { UseHotspotsResult } from 'hooks/useHotspots/types';
 
 const Context = React.createContext<UseHotspotsResult>({
@@ -8,10 +7,10 @@ const Context = React.createContext<UseHotspotsResult>({
     hotspots: [],
   },
   actions: {
-    deleteHotspot: (id: string): void => {},
-    editHotspot: (hotspot: Hotspot): void => {},
-    saveHotspot: (hotspot: Hotspot): void => {},
-    toggleIsPointing: (isPointing: boolean): void => {},
+    deleteHotspot: (): void => {},
+    editHotspot: (): void => {},
+    saveHotspot: (): void => {},
+    toggleIsPointing: (): void => {},
   },
 });
 

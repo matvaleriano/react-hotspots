@@ -59,7 +59,7 @@ const useHotspots = (): UseHotspotsResult => {
       [dispatch]
     ),
     toggleIsPointing: useCallback(
-      (isPointing: boolean = false): void => {
+      (isPointing = false): void => {
         dispatch({
           type: Actions.toggleIsPointing,
           payload: { isPointing: isPointing },
@@ -95,7 +95,7 @@ const useHotspots = (): UseHotspotsResult => {
       document.addEventListener('click', handleClick);
     }
 
-    return () => {
+    return (): void => {
       document.removeEventListener('mousemove', pointElement);
       document.removeEventListener('click', handleClick);
     };

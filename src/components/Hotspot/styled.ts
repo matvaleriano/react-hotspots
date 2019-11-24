@@ -7,8 +7,9 @@ const StyledHotspot = styled.button`
   width: ${HOTSPOT_SIZE}px;
   height: ${HOTSPOT_SIZE}px;
   position: absolute;
-  ${({ top = 0 }: HotspotPosition) => `top: ${top - HOTSPOT_SIZE / 2}px;`}
-  ${({ left = 0 }: HotspotPosition) =>
+  ${({ top = 0 }: HotspotPosition): string =>
+    `top: ${top - HOTSPOT_SIZE / 2}px;`}
+  ${({ left = 0 }: HotspotPosition): string =>
     `left: ${left -
       HOTSPOT_SIZE / 2}px;`}
   background-color: rgba(255, 0, 0, .5);

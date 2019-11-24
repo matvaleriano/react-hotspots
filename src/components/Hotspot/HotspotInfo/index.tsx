@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, ChangeEvent } from 'react';
 import { Button } from 'rebass';
 import Context from '../../Context';
 import StyledHotspotInfo from './styled';
@@ -9,7 +9,7 @@ import InputText from '../../Input/Text';
 import Textarea from '../../Textarea';
 import { Hotspot } from 'shared/types/hotspot';
 
-const HotspotInfo = ({
+const HotspotInfo: React.SFC<Hotspot> = ({
   id,
   description,
   position: { left = 0, top = 0 },
@@ -35,18 +35,24 @@ const HotspotInfo = ({
               name="title"
               placeholder="Insert title here"
               value={updatedTitle}
-              onChange={({ target: { value } }) => setTitle(value)}
+              onChange={({
+                target: { value },
+              }: ChangeEvent<HTMLInputElement>): void => setTitle(value)}
             />
             <Textarea
               name="description"
               placeholder="Insert description here"
-              onChange={({ target: { value } }) => setDescription(value)}
+              onChange={({
+                target: { value },
+              }: ChangeEvent<HTMLTextAreaElement>): void =>
+                setDescription(value)
+              }
             />
             <Button
               variant="primary"
               type="submit"
               size="large"
-              onClick={() =>
+              onClick={(): void =>
                 editHotspot({
                   id,
                   description: updatedDescription,

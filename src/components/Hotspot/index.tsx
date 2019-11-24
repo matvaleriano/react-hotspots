@@ -4,16 +4,22 @@ import StyledHotspot from './styled';
 import HotspotInfo from './HotspotInfo';
 import { Hotspot as Props } from 'shared/types/hotspot';
 
-const Hotspot = ({ id, description, position, title }: Props) => {
+const Hotspot: React.SFC<Props> = ({
+  id,
+  description,
+  position,
+  title,
+}: Props) => {
   const [isShowingInfo, setIsShowingInfo] = useState(!title && !description);
-
-  const toggleContent = () => {
-    setIsShowingInfo(!isShowingInfo);
-  };
 
   return ReactDOM.createPortal(
     <>
-      <StyledHotspot onClick={toggleContent} {...position} />
+      <StyledHotspot
+        onClick={(): void => {
+          setIsShowingInfo(!isShowingInfo);
+        }}
+        {...position}
+      />
       {isShowingInfo && (
         <HotspotInfo
           id={id}

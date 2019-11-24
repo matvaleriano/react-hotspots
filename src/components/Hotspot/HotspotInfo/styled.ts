@@ -14,8 +14,9 @@ const StyledHotspotInfo = styled.article`
 
   animation: appear 0.5s forwards;
 
-  ${({ top = 0 }: HotspotPosition) => `top: ${top + HOTSPOT_SIZE * 1.5}px;`}
-  ${({ left = 0 }: HotspotPosition) =>
+  ${({ top = 0 }: HotspotPosition): string =>
+    `top: ${top + HOTSPOT_SIZE * 1.5}px;`}
+  ${({ left = 0 }: HotspotPosition): string =>
     `left: ${left - 150}px;`}
 
   @keyframes appear {

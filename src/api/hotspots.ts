@@ -1,5 +1,6 @@
-export const getHotspots = () => localStorage.getItem('hotspots') || '[]';
+export const getHotspots = (): string =>
+  localStorage.getItem('hotspots') || '[]';
 
-export const saveHotspots = (hotspots = []) => {
+export const saveHotspots = (hotspots = []): void => {
   localStorage.setItem('hotspots', JSON.stringify(hotspots));
 };

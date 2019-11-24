@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Context from '../Context';
 import { Box, Button, Flex, Text } from 'rebass';
 
-const HotspotsList = () => {
+const HotspotsList: React.SFC = () => {
   const {
     state: { hotspots, isPointing },
     actions: { deleteHotspot, toggleIsPointing },
@@ -20,7 +20,7 @@ const HotspotsList = () => {
       <Button
         variant="primary"
         disabled={isPointing}
-        onClick={() => toggleIsPointing(true)}
+        onClick={(): void => toggleIsPointing(true)}
         fontSize={3}
       >
         New Hotspot
@@ -28,7 +28,7 @@ const HotspotsList = () => {
       {hotspots.map(({ title, id }, index) => (
         <Flex flexWrap="nowrap" key={id} alignItems="center" cellSpacing={2}>
           <Box py={3}>
-            <Button bg="tomato" mr={2} onClick={() => deleteHotspot(id)}>
+            <Button bg="tomato" mr={2} onClick={(): void => deleteHotspot(id)}>
               Delete
             </Button>
           </Box>
