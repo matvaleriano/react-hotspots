@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Box, Flex, Link, Heading } from 'rebass';
 
 const Header: React.SFC = () => (
@@ -29,4 +29,4 @@ const Header: React.SFC = () => (
   </Flex>
 );
 
-export default Header;
+export default memo(Header);

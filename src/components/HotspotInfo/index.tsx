@@ -1,4 +1,4 @@
-import React, { useContext, useState, ChangeEvent } from 'react';
+import React, { useContext, useState, ChangeEvent, memo } from 'react';
 import { Button, Heading, Text } from 'rebass';
 import Context from '../Context';
 import * as S from './styled';
@@ -74,4 +74,4 @@ const HotspotInfo: React.SFC<Hotspot> = ({
   );
 };
 
-export default HotspotInfo;
+export default memo(HotspotInfo);

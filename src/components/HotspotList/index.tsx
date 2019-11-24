@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 import Context from '../Context';
 import { Box, Button, Flex, Text } from 'rebass';
 
@@ -48,4 +48,4 @@ const HotspotsList: React.SFC = () => {
   );
 };
 
-export default HotspotsList;
+export default memo(HotspotsList);
