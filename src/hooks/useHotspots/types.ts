@@ -1,4 +1,4 @@
-import { Hotspot, HotspotPosition } from 'shared/types/hotspot';
+import { Hotspot } from 'shared/types/hotspot';
 
 export enum Actions {
   deleteHotspot = 'deleteHotspot',
