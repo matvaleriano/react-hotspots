@@ -104,6 +104,24 @@ describe('useHotspots', () => {
       });
     });
 
+    test('should call addEventListener 2 times after isPointing has setted to true', () => {
+      jest.spyOn(document, 'addEventListener');
+      act(() => {
+        hook.result.current.actions.toggleIsPointing(true);
+      });
+
+      expect(document.addEventListener).toBeCalledTimes(2);
+    });
+
+    test('should call removeListener 2 times after isPointing has changed, to clear listeners on useEffect`s return', () => {
+      jest.spyOn(document, 'removeEventListener');
+      act(() => {
+        hook.result.current.actions.toggleIsPointing(true);
+      });
+
+      expect(document.removeEventListener).toBeCalledTimes(2);
+    });
+
     test('should update hotspot', () => {
       const editedHotspot = { ...hotspot, title: 'new title' };
       act(() => {
