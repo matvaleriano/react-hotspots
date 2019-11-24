@@ -2,7 +2,7 @@ import React from 'react';
 import Context from '../Context';
 import Header from '../Header';
 import Hotspot from '../Hotspot';
-import HotspotsList from '../HotspotsList';
+import HotspotsList from '../HotspotList';
 import useHotspots from '../../hooks/useHotspots';
 
 const App: React.SFC = () => {
