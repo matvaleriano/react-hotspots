@@ -1,4 +1,3 @@
-import ReactDOM from 'react-dom';
 import React, { useState } from 'react';
 import * as S from './styled';
 import HotspotInfo from '../HotspotInfo';
@@ -10,11 +9,12 @@ const Hotspot: React.SFC<Props> = ({
   position,
   title,
 }: Props) => {
-  const [isShowingInfo, setIsShowingInfo] = useState(!title && !description);
-
-  return ReactDOM.createPortal(
+  const needToSetInfos = !title && !description;
+  const [isShowingInfo, setIsShowingInfo] = useState(() => needToSetInfos);
+  return (
     <>
       <S.Spot
+        data-testid="spot"
         onClick={(): void => {
           setIsShowingInfo(!isShowingInfo);
         }}
@@ -28,8 +28,7 @@ const Hotspot: React.SFC<Props> = ({
           position={position}
         />
       )}
-    </>,
-    document.body
+    </>
   );
 };
 
