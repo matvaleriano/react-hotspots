@@ -1,10 +1,14 @@
-const handlePoint = (isPointing: boolean = false) => (event: MouseEvent) => {
-  const fn = isPointing ? 'add' : 'remove';
-  const target = event.target as HTMLElement;
-  target.classList[fn]('is-pointed');
+export const removePointStyleFromElements = (): void => {
+  const elements = document.getElementsByClassName('is-pointed');
+  for (let i = 0; i < elements.length; i++) {
+    const element = elements[i];
+    element.classList.remove('is-pointed');
+  }
 };
 
-export const pointElement = handlePoint(true);
-export const dontPointElement = handlePoint(false);
-
-export default handlePoint;
+export const pointElement = (event: MouseEvent): void => {
+  removePointStyleFromElements();
+  const { x, y } = event;
+  const element = document.elementFromPoint(x, y) as HTMLElement;
+  element.classList.add('is-pointed');
+};

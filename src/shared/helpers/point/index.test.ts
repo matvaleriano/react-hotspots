@@ -1,16 +1,27 @@
-import { pointElement, dontPointElement } from '.';
+import { pointElement, removePointStyleFromElements } from '.';
+
+let div: HTMLDivElement;
+beforeEach(() => {
+  div = document.createElement('div');
+  document.body.appendChild(div);
+  document.elementFromPoint = (x: number, y: number): HTMLElement | null => {
+    if (x === 0 && y === 0) {
+      return div;
+    } else return null;
+  };
+});
+
+afterEach(() => {
+  div.remove();
+});
 
 test('should point element', () => {
-  const div = document.createElement('div');
-  div.onmouseover = pointElement;
-  div.dispatchEvent(new Event('mouseover'));
+  pointElement({ x: 0, y: 0 } as MouseEvent);
   expect(div.classList.contains('is-pointed')).toBeTruthy();
 });
 
 test('should remove class is-pointed from element', () => {
-  const div = document.createElement('div');
   div.classList.add('is-pointed');
-  div.onmouseleave = dontPointElement;
-  div.dispatchEvent(new Event('mouseleave'));
+  removePointStyleFromElements();
   expect(div.classList.contains('is-pointed')).toBeFalsy();
 });
