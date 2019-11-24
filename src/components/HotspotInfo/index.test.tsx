@@ -46,3 +46,27 @@ test('should render a submit button', () => {
   const submit = getByText(container, 'Save') as HTMLButtonElement;
   expect(submit).not.toBeNull();
 });
+
+test('should render a title and description', () => {
+  const { container, rerender } = wrapper;
+  rerender(
+    <HotspotInfo {...baseProps} title="title" description="description" />
+  );
+
+  const title = getByText(container, 'title');
+  expect(title).not.toBeNull();
+
+  const description = getByText(container, 'description');
+  expect(description).not.toBeNull();
+});
+
+test('should not render button, input or textarea', () => {
+  const { container, rerender } = wrapper;
+  rerender(
+    <HotspotInfo {...baseProps} title="title" description="description" />
+  );
+
+  expect(container.querySelectorAll('input')).toHaveLength(0);
+  expect(container.querySelectorAll('textarea')).toHaveLength(0);
+  expect(container.querySelectorAll('button')).toHaveLength(0);
+});
