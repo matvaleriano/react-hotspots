@@ -2,7 +2,7 @@ import React, { useContext, useState, ChangeEvent } from 'react';
 import { Button, Heading, Text } from 'rebass';
 import Context from '../Context';
 import * as S from './styled';
-import InputText from '../Input/Text';
+import InputText from '../Input';
 import Textarea from '../Textarea';
 import { Hotspot } from 'shared/types/hotspot';
 
