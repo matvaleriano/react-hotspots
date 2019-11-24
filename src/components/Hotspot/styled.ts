@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 import { HOTSPOT_SIZE } from './constants';
+import { HotspotPosition } from 'shared/types/hotspot';
 
 const StyledHotspot = styled.button`
   box-sizing: border-box;
   width: ${HOTSPOT_SIZE}px;
   height: ${HOTSPOT_SIZE}px;
   position: absolute;
-  ${({ top = 0 }) => `top: ${top - HOTSPOT_SIZE / 2}px;`}
-  ${({ left = 0 }) =>
+  ${({ top = 0 }: HotspotPosition) => `top: ${top - HOTSPOT_SIZE / 2}px;`}
+  ${({ left = 0 }: HotspotPosition) =>
     `left: ${left -
       HOTSPOT_SIZE / 2}px;`}
   background-color: rgba(255, 0, 0, .5);

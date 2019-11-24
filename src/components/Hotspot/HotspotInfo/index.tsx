@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import PropTypes from 'prop-types';
+import { Button } from 'rebass';
 import Context from '../../Context';
 import StyledHotspotInfo from './styled';
 import Title from './Title';
@@ -7,47 +7,54 @@ import Text from './Text';
 import Wrapper from './Wrapper';
 import InputText from '../../Input/Text';
 import Textarea from '../../Textarea';
-import Button from '../../Button';
+import { Hotspot } from 'shared/types/hotspot';
 
-const HotspotInfo = ({ id, left, text, title, top }) => {
-  const { updateHotspot } = useContext(Context);
+const HotspotInfo = ({
+  id,
+  description,
+  position: { left = 0, top = 0 },
+  title,
+}: Hotspot) => {
+  const {
+    actions: { editHotspot },
+  } = useContext(Context);
   const [updatedTitle, setTitle] = useState(title);
-  const [updatedText, setText] = useState(text);
+  const [updatedDescription, setDescription] = useState(description);
 
   return (
     <StyledHotspotInfo left={left} top={top}>
       <Wrapper>
-        {title && text ? (
+        {title && description ? (
           <>
             <Title>{title}</Title>
-            <Text>{text}</Text>
+            <Text>{description}</Text>
           </>
         ) : (
           <>
             <InputText
               name="title"
               placeholder="Insert title here"
-              maxlength="52"
               value={updatedTitle}
               onChange={({ target: { value } }) => setTitle(value)}
             />
             <Textarea
-              name="text"
+              name="description"
               placeholder="Insert description here"
-              maxlength="280"
-              onChange={({ target: { value } }) => setText(value)}
+              onChange={({ target: { value } }) => setDescription(value)}
             />
             <Button
+              variant="primary"
               type="submit"
-              brand
               size="large"
               onClick={() =>
-                updateHotspot({
+                editHotspot({
                   id,
-                  text: updatedText,
+                  description: updatedDescription,
+                  position: { left, top },
                   title: updatedTitle,
                 })
               }
+              fontSize={2}
             >
               Save
             </Button>
@@ -56,19 +63,6 @@ const HotspotInfo = ({ id, left, text, title, top }) => {
       </Wrapper>
     </StyledHotspotInfo>
   );
-};
-
-HotspotInfo.propTypes = {
-  id: PropTypes.string.isRequired,
-  left: PropTypes.number,
-  text: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  top: PropTypes.number,
-};
-
-HotspotInfo.defaultProps = {
-  left: 0,
-  top: 0,
 };
 
 export default HotspotInfo;

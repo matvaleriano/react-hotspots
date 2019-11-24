@@ -1,28 +1,32 @@
 import React from 'react';
-import StyledHeader from './styled';
-import Nav from '../Nav';
-import NavLink from '../Nav/Link';
+import { Box, Flex, Link, Heading } from 'rebass';
 
 const Header = () => (
-  <StyledHeader>
-    <Nav>
-      <NavLink
+  <Flex fontSize={3} p={3}>
+    <Box flex={'1 1 auto'}>
+      <Heading fontSize={[3, 4, 5]} as="h1">
+        Hotspots
+      </Heading>
+    </Box>
+    <Box px={1}>
+      <Link
         href="https://github.com/mathvaleriano/react-hotspots"
         target="_blank"
       >
         GitHub
-      </NavLink>
-      <NavLink
-        href="https://www.linkedin.com/in/mathvaleriano/"
-        target="_blank"
-      >
+      </Link>
+    </Box>
+    <Box px={1}>
+      <Link href="https://www.linkedin.com/in/mathvaleriano/" target="_blank">
         LinkedIn
-      </NavLink>
-      <NavLink href="https://twitter.com/mathvaleriano" target="_blank">
+      </Link>
+    </Box>
+    <Box px={1}>
+      <Link href="https://twitter.com/mathvaleriano" target="_blank">
         Twitter
-      </NavLink>
-    </Nav>
-  </StyledHeader>
+      </Link>
+    </Box>
+  </Flex>
 );
 
 export default Header;

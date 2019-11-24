@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { HOTSPOT_SIZE } from '../constants';
+import { HotspotPosition } from 'shared/types/hotspot';
 
 const StyledHotspotInfo = styled.article`
   box-sizing: border-box;
@@ -13,8 +14,9 @@ const StyledHotspotInfo = styled.article`
 
   animation: appear 0.5s forwards;
 
-  ${({ top = 0 }) => `top: ${top + HOTSPOT_SIZE * 1.5}px;`}
-  ${({ left = 0 }) => `left: ${left - 150}px;`}
+  ${({ top = 0 }: HotspotPosition) => `top: ${top + HOTSPOT_SIZE * 1.5}px;`}
+  ${({ left = 0 }: HotspotPosition) =>
+    `left: ${left - 150}px;`}
 
   @keyframes appear {
     from {
