@@ -20,7 +20,7 @@ const HotspotInfo: React.SFC<Hotspot> = ({
   const [updatedDescription, setDescription] = useState(description);
 
   return (
-    <S.Wrapper left={left} top={top}>
+    <S.Wrapper left={left} top={top} data-testid="hotspotInfo">
       <S.Card fontSize={2} p={2}>
         {isFilled ? (
           <>
