@@ -1,7 +1,10 @@
-import { useReducer, useEffect } from 'react';
+import { useReducer, useEffect, useCallback } from 'react';
 import { Hotspot } from 'shared/types/hotspot';
 import { Actions, ReducerActions, State, UseHotspotsResult } from './types';
-import { pointElement, dontPointElement } from 'shared/helpers/point';
+import {
+  pointElement,
+  removePointStyleFromElements,
+} from 'shared/helpers/point';
 
 const reducer = (state: State, action: ReducerActions): State => {
   switch (action.type) {
@@ -49,19 +52,27 @@ const useHotspots = (): UseHotspotsResult => {
     editHotspot: (hotspot: Hotspot): void => {
       dispatch({ type: Actions.editHotspot, payload: { hotspot } });
     },
-    saveHotspot: (hotspot: Hotspot): void => {
-      dispatch({ type: Actions.saveHotspot, payload: { hotspot } });
-    },
-    toggleIsPointing: (isPointing: boolean = false): void => {
-      dispatch({
-        type: Actions.toggleIsPointing,
-        payload: { isPointing: isPointing },
-      });
-    },
+    saveHotspot: useCallback(
+      (hotspot: Hotspot): void => {
+        dispatch({ type: Actions.saveHotspot, payload: { hotspot } });
+      },
+      [dispatch]
+    ),
+    toggleIsPointing: useCallback(
+      (isPointing: boolean = false): void => {
+        dispatch({
+          type: Actions.toggleIsPointing,
+          payload: { isPointing: isPointing },
+        });
+      },
+      [dispatch]
+    ),
   };
 
-  useEffect(() => {
-    const handleClick = (event: MouseEvent) => {
+  const handleClick = useCallback(
+    (event: MouseEvent) => {
+      removePointStyleFromElements();
+      actions.toggleIsPointing(false);
       const id = new Date().toISOString();
       const { x: left, y: top } = event;
       const hotspot = {
@@ -74,21 +85,21 @@ const useHotspots = (): UseHotspotsResult => {
         description: '',
       };
       actions.saveHotspot(hotspot);
-      dontPointElement(event);
-    };
+    },
+    [actions]
+  );
 
+  useEffect(() => {
     if (state.isPointing) {
-      document.addEventListener('mouseover', pointElement);
-      document.addEventListener('mouseleave', dontPointElement);
+      document.addEventListener('mousemove', pointElement);
       document.addEventListener('click', handleClick);
     }
 
     return () => {
-      document.removeEventListener('mouseover', pointElement);
-      document.removeEventListener('mouseleave', dontPointElement);
+      document.removeEventListener('mousemove', pointElement);
       document.removeEventListener('click', handleClick);
     };
-  }, [state.isPointing]);
+  }, [state.isPointing, handleClick]);
 
   return {
     state,
