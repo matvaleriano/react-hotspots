@@ -18,7 +18,7 @@ type Props = {
   children: ReactNode;
 };
 
-const Provider: React.SFC<Props> = ({ children }: Props) => (
+const Provider: React.FC<Props> = ({ children }: Props) => (
   <ThemeProvider theme={theme}>{children}</ThemeProvider>
 );
 

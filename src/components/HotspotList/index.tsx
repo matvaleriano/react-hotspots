@@ -2,7 +2,7 @@ import React, { useContext, memo } from 'react';
 import Context from '../Context';
 import { Box, Button, Flex, Text } from 'rebass';
 
-const HotspotsList: React.SFC = () => {
+const HotspotsList: React.FC = () => {
   const {
     state: { hotspots, isPointing },
     actions: { deleteHotspot, toggleIsPointing },

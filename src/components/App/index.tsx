@@ -5,7 +5,7 @@ import Hotspot from '../Hotspot';
 import HotspotsList from '../HotspotList';
 import useHotspots from '../../hooks/useHotspots';
 
-const App: React.SFC = () => {
+const App: React.FC = () => {
   const { state, actions } = useHotspots();
   const { hotspots: markers = [] } = state;
   const { Provider } = Context;

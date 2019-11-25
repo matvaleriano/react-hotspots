@@ -6,7 +6,7 @@ import InputText from '../Input';
 import Textarea from '../Textarea';
 import { Hotspot } from 'shared/types/hotspot';
 
-const HotspotInfo: React.SFC<Hotspot> = ({
+const HotspotInfo: React.FC<Hotspot> = ({
   id,
   description,
   position: { left, top },

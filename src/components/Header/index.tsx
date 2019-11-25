@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { Box, Flex, Link, Heading } from 'rebass';
 
-const Header: React.SFC = () => (
+const Header: React.FC = () => (
   <Flex fontSize={3} p={3} alignItems="center">
     <Box flex={'1 1 auto'}>
       <Heading fontSize={[3, 4, 5]} as="h1">
