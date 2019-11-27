@@ -13,21 +13,20 @@ const Hotspot: React.FC<Props> = ({
   const needToSetInfos = !title && !description;
   const [isShowingInfo, setIsShowingInfo] = useState(() => needToSetInfos);
   const ref = useRef<HTMLDivElement>(null);
+
   useOutsideClick(
     ref as MutableRefObject<HTMLDivElement>,
     (): void => setIsShowingInfo(false),
     isShowingInfo
   );
 
+  const spotHandleClick = (): void => {
+    setIsShowingInfo(!isShowingInfo);
+  };
+
   return (
     <>
-      <S.Spot
-        data-testid="spot"
-        onClick={(): void => {
-          setIsShowingInfo(!isShowingInfo);
-        }}
-        {...position}
-      />
+      <S.Spot data-testid="spot" onClick={spotHandleClick} {...position} />
       {isShowingInfo && (
         <article ref={ref}>
           <HotspotInfo
