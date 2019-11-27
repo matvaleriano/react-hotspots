@@ -6,6 +6,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.22",
     "@mdx-js/react": "^1.5.1",
+    "@rooks/use-outside-click": "^3.4.0",
     "gh-pages": "^2.1.1",
     "polished": "^3.4.2",
     "react": "^16.12.0",
