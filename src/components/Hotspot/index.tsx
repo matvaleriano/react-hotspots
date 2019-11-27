@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, MutableRefObject } from 'react';
+import useOutsideClick from '@rooks/use-outside-click';
 import * as S from './styled';
 import HotspotInfo from '../HotspotInfo';
 import { Hotspot as Props } from 'shared/types/hotspot';
 
-const Hotspot: React.SFC<Props> = ({
+const Hotspot: React.FC<Props> = ({
   id,
   description,
   position,
@@ -11,6 +12,13 @@ const Hotspot: React.SFC<Props> = ({
 }: Props) => {
   const needToSetInfos = !title && !description;
   const [isShowingInfo, setIsShowingInfo] = useState(() => needToSetInfos);
+  const ref = useRef<HTMLDivElement>(null);
+  useOutsideClick(
+    ref as MutableRefObject<HTMLDivElement>,
+    (): void => setIsShowingInfo(false),
+    isShowingInfo
+  );
+
   return (
     <>
       <S.Spot
@@ -21,12 +29,14 @@ const Hotspot: React.SFC<Props> = ({
         {...position}
       />
       {isShowingInfo && (
-        <HotspotInfo
-          id={id}
-          title={title}
-          description={description}
-          position={position}
-        />
+        <article ref={ref}>
+          <HotspotInfo
+            id={id}
+            title={title}
+            description={description}
+            position={position}
+          />
+        </article>
       )}
     </>
   );
