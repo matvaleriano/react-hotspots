@@ -37,13 +37,14 @@ const reducer = (state: State, action: ReducerActions): State => {
   }
 };
 
-const initialState = {
-  isPointing: false,
-  hotspots: [],
-};
+const getHotspotsFromStorage = (): Hotspot[] =>
+  JSON.parse(localStorage.getItem('hotspots') || '[]');
 
 const useHotspots = (): UseHotspotsResult => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, {
+    isPointing: false,
+    hotspots: getHotspotsFromStorage(),
+  });
 
   const actions = {
     deleteHotspot: (id: string): void => {

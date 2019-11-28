@@ -6,11 +6,39 @@ import {
 import useHotspots from '.';
 import { UseHotspotsResult } from './types';
 
+type Store = { hotspots?: string | undefined };
+type StoreKey = keyof Store;
+
+let store: Store;
+
+beforeEach(() => {
+  const localStorageMock = (function() {
+    store = {};
+    return {
+      getItem: jest.fn().mockReturnValueOnce('[]'),
+      setItem: (key: StoreKey, value: string): void => {
+        store[key] = value;
+      },
+      clear: (): void => {
+        delete store.hotspots;
+      },
+      removeItem: (key: StoreKey): void => {
+        delete store[key];
+      },
+    };
+  })();
+  Object.defineProperty(window, 'localStorage', { value: localStorageMock });
+});
+
 describe('useHotspots', () => {
   let hook: RenderHookResult<unknown, UseHotspotsResult>;
 
   beforeEach(() => {
     hook = renderHook(() => useHotspots());
+  });
+
+  test('should call localStorage.getItem once', () => {
+    expect(window.localStorage.getItem).toHaveBeenCalledTimes(1);
   });
 
   test('should return isPointing false', () => {
@@ -49,8 +77,8 @@ describe('useHotspots', () => {
     });
 
     expect(hook.result.current.state.hotspots).toEqual([hotspot]);
-    
-    const hotspots = JSON.parse(localStorage.getItem('hotspots') as string);
+
+    const hotspots = JSON.parse(store.hotspots as string);
     expect(hotspots).toEqual([hotspot]);
   });
 
@@ -78,7 +106,7 @@ describe('useHotspots', () => {
       });
 
       expect(hook.result.current.state.hotspots).toEqual([]);
-      const hotspots = JSON.parse(localStorage.getItem('hotspots') as string);
+      const hotspots = JSON.parse(store.hotspots as string);
       expect(hotspots).toEqual([]);
     });
 
@@ -89,7 +117,7 @@ describe('useHotspots', () => {
 
       expect(hook.result.current.state.hotspots).toEqual([hotspot]);
 
-      const hotspots = JSON.parse(localStorage.getItem('hotspots') as string);
+      const hotspots = JSON.parse(store.hotspots as string);
       expect(hotspots).toEqual([hotspot]);
     });
   });
@@ -148,7 +176,7 @@ describe('useHotspots', () => {
     });
 
     test('should have hotspots in storage', () => {
-      const hotspots = JSON.parse(localStorage.getItem('hotspots') as string);
+      const hotspots = JSON.parse(store.hotspots as string);
       expect(hotspots).toEqual([hotspot]);
     });
   });
