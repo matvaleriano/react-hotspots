@@ -79,7 +79,7 @@ describe('useHotspots', () => {
       title: 'title',
     };
     act(() => {
-      hook.result.current.actions.saveHotspot(hotspot);
+      hook.result.current.actions.addHotspot(hotspot);
     });
 
     expect(hook.result.current.state.hotspots).toEqual([
@@ -118,7 +118,7 @@ describe('useHotspots', () => {
 
     beforeEach(() => {
       act(() => {
-        hook.result.current.actions.saveHotspot({
+        hook.result.current.actions.addHotspot({
           ...hotspot,
           windowSize: {
             offsetWidth: 0,
@@ -180,7 +180,7 @@ describe('useHotspots', () => {
 
     beforeEach(() => {
       act(() => {
-        hook.result.current.actions.saveHotspot(hotspot);
+        hook.result.current.actions.addHotspot(hotspot);
       });
     });
 

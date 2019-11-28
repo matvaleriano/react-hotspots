@@ -22,7 +22,7 @@ const reducer = (state: State, action: ReducerActions): State => {
             : hotspot
         ),
       };
-    case Actions.saveHotspot:
+    case Actions.addHotspot:
       return {
         ...state,
         hotspots: [...state.hotspots, action.payload.hotspot],
@@ -53,12 +53,12 @@ const useHotspots = (): UseHotspotsResult => {
     editHotspot: (hotspot: Hotspot): void => {
       dispatch({ type: Actions.editHotspot, payload: { hotspot } });
     },
-    saveHotspot: useCallback(
+    addHotspot: useCallback(
       (hotspot: Hotspot): void => {
         const { offsetHeight, offsetWidth } = document.body;
 
         dispatch({
-          type: Actions.saveHotspot,
+          type: Actions.addHotspot,
           payload: {
             hotspot: {
               ...hotspot,
@@ -98,7 +98,7 @@ const useHotspots = (): UseHotspotsResult => {
         title: '',
         description: '',
       };
-      actions.saveHotspot(hotspot);
+      actions.addHotspot(hotspot);
     },
     [actions]
   );

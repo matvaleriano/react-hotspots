@@ -3,7 +3,7 @@ import { Hotspot } from 'shared/types/hotspot';
 export enum Actions {
   deleteHotspot = 'deleteHotspot',
   editHotspot = 'editHotspot',
-  saveHotspot = 'saveHotspot',
+  addHotspot = 'addHotspot',
   toggleIsPointing = 'toggleIsPointing',
 }
 
@@ -17,7 +17,7 @@ export type UseHotspotsResult = {
   actions: {
     [Actions.deleteHotspot]: (id: string) => void;
     [Actions.editHotspot]: (hotspot: Hotspot) => void;
-    [Actions.saveHotspot]: (hotspot: Hotspot) => void;
+    [Actions.addHotspot]: (hotspot: Hotspot) => void;
     [Actions.toggleIsPointing]: (isPointing: boolean) => void;
   };
 };
@@ -25,7 +25,7 @@ export type UseHotspotsResult = {
 export type ReducerActions =
   | { type: Actions.deleteHotspot; payload: { id: string } }
   | {
-      type: Actions.saveHotspot | Actions.editHotspot;
+      type: Actions.addHotspot | Actions.editHotspot;
       payload: {
         hotspot: Hotspot;
       };

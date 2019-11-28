@@ -9,7 +9,7 @@ const Context = React.createContext<UseHotspotsResult>({
   actions: {
     deleteHotspot: (): void => {},
     editHotspot: (): void => {},
-    saveHotspot: (): void => {},
+    addHotspot: (): void => {},
     toggleIsPointing: (): void => {},
   },
 });
