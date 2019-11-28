@@ -82,10 +82,26 @@ describe('useHotspots', () => {
       hook.result.current.actions.saveHotspot(hotspot);
     });
 
-    expect(hook.result.current.state.hotspots).toEqual([hotspot]);
+    expect(hook.result.current.state.hotspots).toEqual([
+      {
+        ...hotspot,
+        windowSize: {
+          offsetWidth: 0,
+          offsetHeight: 0,
+        },
+      },
+    ]);
 
     const hotspots = JSON.parse(store.hotspots as string);
-    expect(hotspots).toEqual([hotspot]);
+    expect(hotspots).toEqual([
+      {
+        ...hotspot,
+        windowSize: {
+          offsetWidth: 0,
+          offsetHeight: 0,
+        },
+      },
+    ]);
   });
 
   describe('deleteHotspot', () => {
@@ -102,7 +118,13 @@ describe('useHotspots', () => {
 
     beforeEach(() => {
       act(() => {
-        hook.result.current.actions.saveHotspot(hotspot);
+        hook.result.current.actions.saveHotspot({
+          ...hotspot,
+          windowSize: {
+            offsetWidth: 0,
+            offsetHeight: 0,
+          },
+        });
       });
     });
 
@@ -121,10 +143,26 @@ describe('useHotspots', () => {
         hook.result.current.actions.deleteHotspot('wrong');
       });
 
-      expect(hook.result.current.state.hotspots).toEqual([hotspot]);
+      expect(hook.result.current.state.hotspots).toEqual([
+        {
+          ...hotspot,
+          windowSize: {
+            offsetWidth: 0,
+            offsetHeight: 0,
+          },
+        },
+      ]);
 
       const hotspots = JSON.parse(store.hotspots as string);
-      expect(hotspots).toEqual([hotspot]);
+      expect(hotspots).toEqual([
+        {
+          ...hotspot,
+          windowSize: {
+            offsetWidth: 0,
+            offsetHeight: 0,
+          },
+        },
+      ]);
     });
   });
 
@@ -178,12 +216,28 @@ describe('useHotspots', () => {
       act(() => {
         hook.result.current.actions.editHotspot(editedHotspot);
       });
-      expect(hook.result.current.state.hotspots).toEqual([hotspot]);
+      expect(hook.result.current.state.hotspots).toEqual([
+        {
+          ...hotspot,
+          windowSize: {
+            offsetWidth: 0,
+            offsetHeight: 0,
+          },
+        },
+      ]);
     });
 
     test('should have hotspots in storage', () => {
       const hotspots = JSON.parse(store.hotspots as string);
-      expect(hotspots).toEqual([hotspot]);
+      expect(hotspots).toEqual([
+        {
+          ...hotspot,
+          windowSize: {
+            offsetWidth: 0,
+            offsetHeight: 0,
+          },
+        },
+      ]);
     });
   });
 });
