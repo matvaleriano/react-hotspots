@@ -55,7 +55,20 @@ const useHotspots = (): UseHotspotsResult => {
     },
     saveHotspot: useCallback(
       (hotspot: Hotspot): void => {
-        dispatch({ type: Actions.saveHotspot, payload: { hotspot } });
+        const { offsetHeight, offsetWidth } = document.body;
+
+        dispatch({
+          type: Actions.saveHotspot,
+          payload: {
+            hotspot: {
+              ...hotspot,
+              windowSize: {
+                offsetHeight,
+                offsetWidth,
+              },
+            },
+          },
+        });
       },
       [dispatch]
     ),
