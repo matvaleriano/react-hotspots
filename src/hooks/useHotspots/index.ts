@@ -101,6 +101,10 @@ const useHotspots = (): UseHotspotsResult => {
     };
   }, [state.isPointing, handleClick]);
 
+  useEffect(() => {
+    localStorage.setItem('hotspots', JSON.stringify(state.hotspots));
+  }, [state.hotspots]);
+
   return {
     state,
     actions,

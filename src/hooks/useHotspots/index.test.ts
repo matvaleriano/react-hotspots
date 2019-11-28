@@ -49,6 +49,9 @@ describe('useHotspots', () => {
     });
 
     expect(hook.result.current.state.hotspots).toEqual([hotspot]);
+    
+    const hotspots = JSON.parse(localStorage.getItem('hotspots') as string);
+    expect(hotspots).toEqual([hotspot]);
   });
 
   describe('deleteHotspot', () => {
@@ -75,6 +78,8 @@ describe('useHotspots', () => {
       });
 
       expect(hook.result.current.state.hotspots).toEqual([]);
+      const hotspots = JSON.parse(localStorage.getItem('hotspots') as string);
+      expect(hotspots).toEqual([]);
     });
 
     test('should not remove any hotspot, id not found', () => {
@@ -83,6 +88,9 @@ describe('useHotspots', () => {
       });
 
       expect(hook.result.current.state.hotspots).toEqual([hotspot]);
+
+      const hotspots = JSON.parse(localStorage.getItem('hotspots') as string);
+      expect(hotspots).toEqual([hotspot]);
     });
   });
 
@@ -137,6 +145,11 @@ describe('useHotspots', () => {
         hook.result.current.actions.editHotspot(editedHotspot);
       });
       expect(hook.result.current.state.hotspots).toEqual([hotspot]);
+    });
+
+    test('should have hotspots in storage', () => {
+      const hotspots = JSON.parse(localStorage.getItem('hotspots') as string);
+      expect(hotspots).toEqual([hotspot]);
     });
   });
 });
