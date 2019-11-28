@@ -8,11 +8,17 @@ import { UseHotspotsResult } from './types';
 
 type Store = { hotspots?: string | undefined };
 type StoreKey = keyof Store;
+type LocalStorageMock = {
+  getItem: jest.Mock;
+  setItem: (key: StoreKey, value: string) => void;
+  clear: () => void;
+  removeItem: (key: StoreKey) => void;
+};
 
 let store: Store;
 
 beforeEach(() => {
-  const localStorageMock = (function() {
+  const localStorageMock = ((): LocalStorageMock => {
     store = {};
     return {
       getItem: jest.fn().mockReturnValueOnce('[]'),

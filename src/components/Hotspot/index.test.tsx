@@ -41,6 +41,8 @@ test('should hide hotspotInfo when click on spot', async () => {
 });
 
 test('should initially hide hotspotInfos', () => {
-  const { container } = render(<Hotspot {...baseProps} title="title" description="description" />);
+  const { container } = render(
+    <Hotspot {...baseProps} title="title" description="description" />
+  );
   expect(() => getByTestId(container, 'hotspotInfo')).toThrow();
 });
