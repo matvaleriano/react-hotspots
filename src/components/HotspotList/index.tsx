@@ -1,4 +1,5 @@
 import React, { useContext, memo } from 'react';
+import { Delete } from 'styled-icons/material/Delete';
 import Context from '../Context';
 import { Box, Button, Flex, Text } from 'rebass';
 
@@ -28,8 +29,13 @@ const HotspotsList: React.FC = () => {
       {hotspots.map(({ title, id }, index) => (
         <Flex flexWrap="nowrap" key={id} alignItems="center" cellSpacing={2}>
           <Box py={3}>
-            <Button bg="tomato" mr={2} onClick={(): void => deleteHotspot(id)}>
-              Delete
+            <Button
+              variant="outline"
+              bg="tomato"
+              mr={2}
+              onClick={(): void => deleteHotspot(id)}
+            >
+              <Delete style={{ width: '1rem' }} />
             </Button>
           </Box>
           <Box py={3}>
