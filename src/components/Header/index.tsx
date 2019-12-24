@@ -1,5 +1,8 @@
 import React, { memo } from 'react';
 import { Box, Flex, Link, Heading } from 'rebass';
+import { Github } from 'styled-icons/boxicons-logos/Github';
+import { LinkedinSquare } from 'styled-icons/boxicons-logos/LinkedinSquare';
+import { Twitter } from 'styled-icons/boxicons-logos/Twitter';
 
 const Header: React.FC = () => (
   <Flex fontSize={3} p={3} alignItems="center">
@@ -13,17 +16,17 @@ const Header: React.FC = () => (
         href="https://github.com/mathvaleriano/react-hotspots"
         target="_blank"
       >
-        GitHub
+        <Github style={{ width: '2rem', color: 'black' }} />
       </Link>
     </Box>
     <Box px={1}>
       <Link href="https://www.linkedin.com/in/mathvaleriano/" target="_blank">
-        LinkedIn
+        <LinkedinSquare style={{ width: '2rem', color: 'black' }} />
       </Link>
     </Box>
     <Box px={1}>
       <Link href="https://twitter.com/mathvaleriano" target="_blank">
-        Twitter
+        <Twitter style={{ width: '2rem', color: 'black' }} />
       </Link>
     </Box>
   </Flex>
