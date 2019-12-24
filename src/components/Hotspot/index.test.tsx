@@ -10,8 +10,10 @@ import Hotspot from '.';
 
 let wrapper: RenderResult;
 
+const id = new Date().toISOString();
+
 const baseProps = {
-  id: new Date().toISOString(),
+  id,
   position: {
     left: 0,
     top: 0,
@@ -25,7 +27,7 @@ beforeEach(() => {
 afterEach(cleanup);
 
 test('should initially show hotspotInfo', () => {
-  const hotspotInfo = getByTestId(wrapper.container, 'hotspotInfo');
+  const hotspotInfo = getByTestId(wrapper.container, `hotspotInfo-${id}`);
   expect(hotspotInfo).not.toBeNull();
 });
 
