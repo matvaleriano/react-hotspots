@@ -9,8 +9,9 @@ import { Hotspot } from 'shared/types/hotspot';
 const HotspotInfo: React.FC<Hotspot> = ({
   id,
   description,
-  position: { left, top },
+  position,
   title,
+  windowSize,
 }: Hotspot) => {
   const {
     actions: { editHotspot },
@@ -20,57 +21,54 @@ const HotspotInfo: React.FC<Hotspot> = ({
   const [updatedDescription, setDescription] = useState(description);
 
   return (
-    <S.Wrapper left={left} top={top} data-testid="hotspotInfo">
-      <S.Card fontSize={2} p={2}>
-        {isFilled ? (
-          <>
-            <Heading fontSize={4} mb={2}>
-              {title}
-            </Heading>
-            <Text>{description}</Text>
-          </>
-        ) : (
-          <>
-            <InputText
-              data-testid="hotspotInfoInputText"
-              name="title"
-              placeholder="Insert title here"
-              value={updatedTitle}
-              onChange={({
-                target: { value },
-              }: ChangeEvent<HTMLInputElement>): void => setTitle(value)}
-            />
-            <Textarea
-              data-testid="hotspotInfoTextarea"
-              name="description"
-              placeholder="Insert description here"
-              onChange={({
-                target: { value },
-              }: ChangeEvent<HTMLTextAreaElement>): void =>
-                setDescription(value)
-              }
-            />
-            <Button
-              variant="primary"
-              type="submit"
-              size="large"
-              width={1}
-              onClick={(): void =>
-                editHotspot({
-                  id,
-                  description: updatedDescription,
-                  position: { left, top },
-                  title: updatedTitle,
-                })
-              }
-              fontSize={2}
-            >
-              Save
-            </Button>
-          </>
-        )}
-      </S.Card>
-    </S.Wrapper>
+    <S.Card fontSize={2} p={2} data-testid={`hotspotInfo-${id}`}>
+      {isFilled ? (
+        <>
+          <Heading fontSize={4} mb={2}>
+            {title}
+          </Heading>
+          <Text>{description}</Text>
+        </>
+      ) : (
+        <>
+          <InputText
+            data-testid="hotspotInfoInputText"
+            name="title"
+            placeholder="Insert title here"
+            value={updatedTitle}
+            onChange={({
+              target: { value },
+            }: ChangeEvent<HTMLInputElement>): void => setTitle(value)}
+          />
+          <Textarea
+            data-testid="hotspotInfoTextarea"
+            name="description"
+            placeholder="Insert description here"
+            onChange={({
+              target: { value },
+            }: ChangeEvent<HTMLTextAreaElement>): void => setDescription(value)}
+          />
+          <Button
+            variant="primary"
+            type="submit"
+            size="large"
+            width={1}
+            onClick={(): void =>
+              editHotspot({
+                id,
+                description: updatedDescription,
+                title: updatedTitle,
+                position,
+                windowSize,
+              })
+            }
+            fontSize={2}
+          >
+            Save
+          </Button>
+        </>
+      )}
+    </S.Card>
   );
 };
 
