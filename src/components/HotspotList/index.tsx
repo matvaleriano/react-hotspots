@@ -27,19 +27,25 @@ const HotspotsList: React.FC = () => {
         New Hotspot
       </Button>
       {hotspots.map(({ title, id }, index) => (
-        <Flex flexWrap="nowrap" key={id} alignItems="center" cellSpacing={2}>
+        <Flex
+          flexWrap="nowrap"
+          key={id}
+          justifyContent="space-between"
+          alignItems="center"
+          cellSpacing={2}
+        >
+          <Box py={3}>
+            <Text as="strong">{title || `Hotspot #${index + 1}`}</Text>
+          </Box>
           <Box py={3}>
             <Button
               variant="outline"
               bg="tomato"
-              mr={2}
+              ml={2}
               onClick={(): void => deleteHotspot(id)}
             >
               <Delete style={{ width: '1rem' }} />
             </Button>
-          </Box>
-          <Box py={3}>
-            <Text as="strong">{title || `Hotspot #${index + 1}`}</Text>
           </Box>
         </Flex>
       ))}
