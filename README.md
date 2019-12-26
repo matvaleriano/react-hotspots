@@ -20,10 +20,15 @@ This project has some **forced clicks** (it's not a bug) if you put some hotspot
 
 ### Setup
 
-* Use node 8+
-* Install dependencies `yarn`
-* Run project `yarn start`
-* Run lint `yarn lint`
+- Use node 12+
+- Install dependencies `yarn`
+
+### Commands
+
+- Run project `yarn start`
+- Run lint `yarn lint`
+- Run test `yarn test`
+- Run coverage `yarn test:coverage`
 
 ### Structure/Folders
 
@@ -33,12 +38,13 @@ This project has some **forced clicks** (it's not a bug) if you put some hotspot
 |-- public (what you see is what you get)
 |-- src
 |   |-- api (request/store)
-|   |-- components (just components/contextApi/ui)
-|   |-- hooks (yeah... hooks... finally!!!)
+|   |-- components (all components)
+|   |-- config
+|   |   |-- theme (theme provider)
+|   |-- hooks
 |   |-- shared (colors/etc)
 |   |-- index.css (global css)
-|   |-- index.js (render)
-|   |-- serviceWorker
+|   |-- index.tsx (render)
 |
 |-- ... config files
 
@@ -46,13 +52,9 @@ This project has some **forced clicks** (it's not a bug) if you put some hotspot
 
 ### Made with
 
-* [React](https://reactjs.org/)
-* [Hooks](https://reactjs.org/docs/hooks-faq.html)
-* [Context Api](https://reactjs.org/docs/context.html)
-* [Styled Components](https://www.styled-components.com/)
-* [Polished](https://github.com/styled-components/polished)
-* Love <3
-
-`Obs.: I didn't create tests because I had no time, lol`
-
-`But I'll create an issue`
+- [React](https://reactjs.org/)
+- [Hooks](https://reactjs.org/docs/hooks-faq.html)
+- [Context Api](https://reactjs.org/docs/context.html)
+- [Styled Components](https://www.styled-components.com/)
+- [Typescript](https://www.typescriptlang.org/)
+- Love <3

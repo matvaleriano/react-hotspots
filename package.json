@@ -4,20 +4,26 @@
   "private": true,
   "homepage": "https://mathvaleriano.github.io/react-hotspots",
   "dependencies": {
-    "gh-pages": "^2.0.1",
-    "polished": "^3.4.1",
-    "prop-types": "^15.7.2",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-scripts": "^3.1.2",
-    "styled-components": "^4.3.2"
+    "@emotion/core": "^10.0.27",
+    "@mdx-js/react": "^1.5.3",
+    "@rooks/use-outside-click": "^3.5.0",
+    "gh-pages": "^2.1.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-scripts": "^3.3.0",
+    "rebass": "^4.0.7",
+    "styled-components": "^4.4.1",
+    "styled-icons": "^9.1.0",
+    "theme-ui": "^0.2.52",
+    "typescript": "^3.7.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "CI=true npm test -- --coverage",
     "eject": "react-scripts eject",
-    "lint": "./node_modules/.bin/eslint src/ --fix",
+    "lint": "./node_modules/.bin/eslint src/**/*.{ts,tsx}",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
@@ -31,15 +37,43 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.12.4"
+    "@testing-library/react": "^9.4.0",
+    "@testing-library/react-hooks": "^3.2.1",
+    "@types/jest": "^24.0.24",
+    "@types/node": "^13.1.0",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
+    "@types/rebass": "^4.0.3",
+    "@types/styled-components": "^4.4.1",
+    "@types/testing-library__react": "^9.1.2",
+    "@types/testing-library__react-hooks": "^3.2.0",
+    "@types/theme-ui": "^0.2.6",
+    "@typescript-eslint/eslint-plugin": "^2.13.0",
+    "@typescript-eslint/parser": "^2.13.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "prettier": "^1.19.1",
+    "react-test-renderer": "^16.12.0"
   },
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint",
       "pre-push": "npm run lint"
     }
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/**/*.d.ts",
+      "!src/shared/types/*.ts",
+      "!<rootDir>/node_modules/"
+    ],
+    "coverageReporters": [
+      "text"
+    ]
   }
 }
