@@ -3,6 +3,7 @@ import { Card as RCard } from 'rebass';
 
 export const Card = styled(RCard)`
   position: relative;
+  width: 100%;
 
   &:before {
     content: '';
