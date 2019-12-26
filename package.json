@@ -1,8 +1,6 @@
 {
-  "name": "conpasschallenge",
-  "version": "0.1.0",
-  "private": true,
-  "homepage": "https://mathvaleriano.github.io/react-hotspots",
+  "name": "react-hotspots",
+  "version": "1.0.0",
   "dependencies": {
     "@emotion/core": "^10.0.27",
     "@mdx-js/react": "^1.5.3",
