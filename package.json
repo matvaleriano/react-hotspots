@@ -22,6 +22,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "CI=true npm test -- --coverage",
     "eject": "react-scripts eject",
     "lint": "./node_modules/.bin/eslint src/**/*.{ts,tsx}",
     "predeploy": "npm run build",
@@ -64,5 +65,16 @@
       "pre-commit": "npm run lint",
       "pre-push": "npm run lint"
     }
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/**/*.d.ts",
+      "!src/shared/types/*.ts",
+      "!<rootDir>/node_modules/"
+    ],
+    "coverageReporters": [
+      "text"
+    ]
   }
 }
