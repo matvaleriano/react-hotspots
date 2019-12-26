@@ -1,17 +1,36 @@
 import React from 'react';
 import { UseHotspotsResult } from 'hooks/useHotspots/types';
+import useHotspots from 'hooks/useHotspots';
 
-const Context = React.createContext<UseHotspotsResult>({
-  state: {
-    isPointing: false,
-    hotspots: [],
+const state = {
+  isPointing: false,
+  hotspots: [],
+};
+
+const actions = {
+  deleteHotspot: function(): void {
+    // initial attribute
   },
-  actions: {
-    deleteHotspot: (): void => {},
-    editHotspot: (): void => {},
-    addHotspot: (): void => {},
-    toggleIsPointing: (): void => {},
+  editHotspot: function(): void {
+    // initial attribute
   },
-});
+  addHotspot: function(): void {
+    // initial attribute
+  },
+  toggleIsPointing: function(): void {
+    // initial attribute
+  },
+};
+
+const Context = React.createContext<UseHotspotsResult>({ state, actions });
+
+type Props = {
+  children: React.ReactNode;
+};
+
+export const Provider: React.FC<Props> = ({ children }: Props) => {
+  const value = useHotspots();
+  return <Context.Provider value={value}>{children}</Context.Provider>;
+};
 
 export default Context;
