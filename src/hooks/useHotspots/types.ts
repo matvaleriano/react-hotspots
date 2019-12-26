@@ -39,11 +39,11 @@ export type ReducerActions =
       };
     }
   | {
-    type: Actions.editHotspot;
-    payload: {
-      id: string;
-      title: string;
-      description?: string;
-    };
-  }
+      type: Actions.editHotspot;
+      payload: {
+        id: string;
+        title: string;
+        description?: string;
+      };
+    }
   | { type: Actions.toggleIsPointing; payload: { isPointing: boolean } };
