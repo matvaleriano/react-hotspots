@@ -73,5 +73,6 @@
     "coverageReporters": [
       "text"
     ]
-  }
+  },
+  "license": "MIT"
 }
