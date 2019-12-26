@@ -8,7 +8,6 @@
     "@mdx-js/react": "^1.5.3",
     "@rooks/use-outside-click": "^3.5.0",
     "gh-pages": "^2.1.1",
-    "polished": "^3.4.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-scripts": "^3.3.0",
