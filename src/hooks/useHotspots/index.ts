@@ -17,8 +17,8 @@ const reducer = (state: State, action: ReducerActions): State => {
       return {
         ...state,
         hotspots: state.hotspots.map(hotspot =>
-          hotspot.id === action.payload.hotspot.id
-            ? action.payload.hotspot
+          hotspot.id === action.payload.id
+            ? { ...hotspot, ...action.payload }
             : hotspot
         ),
       };
@@ -50,8 +50,12 @@ const useHotspots = (): UseHotspotsResult => {
     deleteHotspot: (id: string): void => {
       dispatch({ type: Actions.deleteHotspot, payload: { id } });
     },
-    editHotspot: (hotspot: Hotspot): void => {
-      dispatch({ type: Actions.editHotspot, payload: { hotspot } });
+    editHotspot: (payload: {
+      id: string;
+      title: string;
+      description?: string;
+    }): void => {
+      dispatch({ type: Actions.editHotspot, payload });
     },
     addHotspot: useCallback(
       (hotspot: Hotspot): void => {

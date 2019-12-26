@@ -16,7 +16,15 @@ export type UseHotspotsResult = {
   state: State;
   actions: {
     [Actions.deleteHotspot]: (id: string) => void;
-    [Actions.editHotspot]: (hotspot: Hotspot) => void;
+    [Actions.editHotspot]: ({
+      id,
+      title,
+      description,
+    }: {
+      id: string;
+      title: string;
+      description?: string;
+    }) => void;
     [Actions.addHotspot]: (hotspot: Hotspot) => void;
     [Actions.toggleIsPointing]: (isPointing: boolean) => void;
   };
@@ -25,9 +33,17 @@ export type UseHotspotsResult = {
 export type ReducerActions =
   | { type: Actions.deleteHotspot; payload: { id: string } }
   | {
-      type: Actions.addHotspot | Actions.editHotspot;
+      type: Actions.addHotspot;
       payload: {
         hotspot: Hotspot;
       };
     }
+  | {
+    type: Actions.editHotspot;
+    payload: {
+      id: string;
+      title: string;
+      description?: string;
+    };
+  }
   | { type: Actions.toggleIsPointing; payload: { isPointing: boolean } };

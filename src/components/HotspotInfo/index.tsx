@@ -9,16 +9,14 @@ import { Hotspot } from 'shared/types/hotspot';
 const HotspotInfo: React.FC<Hotspot> = ({
   id,
   description,
-  position,
   title,
-  windowSize,
 }: Hotspot) => {
   const {
     actions: { editHotspot },
   } = useContext(Context);
   const isFilled = title && description;
-  const [updatedTitle, setTitle] = useState(title);
-  const [updatedDescription, setDescription] = useState(description);
+  const [updatedTitle, setTitle] = useState(title || '');
+  const [updatedDescription, setDescription] = useState(description || '');
 
   return (
     <S.Card fontSize={2} p={2} data-testid={`hotspotInfo-${id}`}>
@@ -58,10 +56,9 @@ const HotspotInfo: React.FC<Hotspot> = ({
                 id,
                 description: updatedDescription,
                 title: updatedTitle,
-                position,
-                windowSize,
               })
             }
+            disabled={updatedTitle === ''}
             fontSize={2}
           >
             Save
