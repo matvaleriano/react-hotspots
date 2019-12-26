@@ -7,6 +7,7 @@ import {
 } from '@testing-library/react';
 import { getByTestId } from '@testing-library/dom';
 import Hotspot from '.';
+import { Provider } from 'components/Context';
 
 let wrapper: RenderResult;
 
@@ -21,7 +22,11 @@ const baseProps = {
 };
 
 beforeEach(() => {
-  wrapper = render(<Hotspot {...baseProps} />);
+  wrapper = render(
+    <Provider>
+      <Hotspot {...baseProps} />
+    </Provider>
+  );
 });
 
 afterEach(cleanup);

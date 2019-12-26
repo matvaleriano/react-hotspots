@@ -2,6 +2,7 @@ import React from 'react';
 import { render, cleanup, RenderResult } from '@testing-library/react';
 import { getByTestId, getByText } from '@testing-library/dom';
 import HotspotInfo from '.';
+import { Provider } from 'components/Context';
 
 let wrapper: RenderResult;
 
@@ -14,7 +15,11 @@ const baseProps = {
 };
 
 beforeEach(() => {
-  wrapper = render(<HotspotInfo {...baseProps} />);
+  wrapper = render(
+    <Provider>
+      <HotspotInfo {...baseProps} />
+    </Provider>
+  );
 });
 
 afterEach(cleanup);
@@ -50,7 +55,9 @@ test('should render a submit button', () => {
 test('should render a title and description', () => {
   const { container, rerender } = wrapper;
   rerender(
-    <HotspotInfo {...baseProps} title="title" description="description" />
+    <Provider>
+      <HotspotInfo {...baseProps} title="title" description="description" />
+    </Provider>
   );
 
   const title = getByText(container, 'title');
@@ -63,7 +70,9 @@ test('should render a title and description', () => {
 test('should not render button, input or textarea', () => {
   const { container, rerender } = wrapper;
   rerender(
-    <HotspotInfo {...baseProps} title="title" description="description" />
+    <Provider>
+      <HotspotInfo {...baseProps} title="title" description="description" />
+    </Provider>
   );
 
   expect(container.querySelectorAll('input')).toHaveLength(0);
