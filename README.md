@@ -1,7 +1,6 @@
-*(upgrading to typescript)*
 # React-Hotspots
 
-` What's a Hotspot? It's a visual effect to show something new.`
+`What's a Hotspot? It's a visual effect to show something new.`
 
 ### Motivation
 
