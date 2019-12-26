@@ -203,12 +203,22 @@ describe('useHotspots', () => {
     });
 
     test('should update hotspot', () => {
-      const editedHotspot = { ...hotspot, title: 'new title' };
+      const { id, description } = hotspot;
+      const editedHotspot = { id, description, title: 'new title' };
       act(() => {
         hook.result.current.actions.editHotspot(editedHotspot);
       });
 
-      expect(hook.result.current.state.hotspots).toEqual([editedHotspot]);
+      expect(hook.result.current.state.hotspots).toEqual([
+        {
+          ...hotspot,
+          ...editedHotspot,
+          windowSize: {
+            offsetHeight: 0,
+            offsetWidth: 0,
+          },
+        },
+      ]);
     });
 
     test('should not update any hotspot', () => {
