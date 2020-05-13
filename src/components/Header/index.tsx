@@ -25,7 +25,7 @@ const LINKS = [
 const Header: React.FC = () => (
   <Flex fontSize={3} p={3} alignItems="center">
     <Box flex={'1 1 auto'}>
-      <Heading fontSize={[3, 4, 5]} as="h1" data-testid="heading">
+      <Heading fontSize={[3, 4, 5]} as="h1" data-testid="heading" style={{color: 'red'}}>
         Hotspots
       </Heading>
     </Box>
