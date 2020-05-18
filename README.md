@@ -1,4 +1,6 @@
 # React-Hotspots
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmathvaleriano%2Freact-hotspots.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmathvaleriano%2Freact-hotspots?ref=badge_shield)
+
 
 `What's a Hotspot? It's a visual effect to show something new.`
 
@@ -57,3 +59,7 @@ This project has some **forced clicks** (it's not a bug) if you put some hotspot
 - [Styled Components](https://www.styled-components.com/)
 - [Typescript](https://www.typescriptlang.org/)
 - Love <3
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmathvaleriano%2Freact-hotspots.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmathvaleriano%2Freact-hotspots?ref=badge_large)
